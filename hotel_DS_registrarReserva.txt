@@ -1,0 +1,41 @@
+@startuml "Diagrama secuencia Registrar reserva"
+actor Main
+
+Main -> Hotel: registrarReserva(dni: String, numeroHabitacion: String, fechaComienzo: Date, fechaHasta: Date, seña: double): Reserva
+
+activate Hotel
+    Hotel -> Hotel: buscarCliente(dni): Cliente
+    Hotel -> Hotel: buscarHabitacion(numeroHabitacion): Habitacion
+    alt cliente encontrado & habitacion encontrada
+        Hotel -> Cliente: reservar(habitacion: Habitacion, fechaComienzo: Date, fechaHasta: Date, seña: double): Reserva
+        activate Cliente
+            alt es esporadico
+                Cliente -> Cliente: verificarSeñaValida(seña: double): void
+                Cliente -> Habitacion: calcularPrecioEsporadico(fechaComienzo: Date, fechaHasta: Date): double
+                activate Habitacion
+                Habitacion --> Cliente: double
+                deactivate Habitacion
+            else
+                Cliente -> Habitacion: calcularPrecioHabitual(fechaComienzo: Date, fechaHasta: Date): double
+                activate Habitacion
+                Habitacion --> Cliente: double
+                deactivate Habitacion
+            end
+            Cliente -> Reserva: new Reserva(cliente: Cliente, habitacion: Habitacion, fechaComienzo: Date, importeSeña: double, importeTotal: double)
+            Cliente -> Cliente: agregarReserva(reserva): void
+            Cliente -> Cliente: actualizarHabitualidad(): void
+                activate Cliente
+                    opt reservas > 6
+                        Cliente -> Cliente: setTipoCliente(HABITUAL)
+                    end
+                deactivate Cliente
+            Cliente --> Hotel: Reserva
+        deactivate Cliente
+        Hotel -> Hotel: agregarReserva(reserva): void
+        Hotel --> Main: Reserva
+    else
+        Hotel --> Main: ClienteNoEncontradoException | HabitacionNoEnonctradaException
+    end
+
+deactivate Hotel
+@enduml
