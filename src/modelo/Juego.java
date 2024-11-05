@@ -38,19 +38,22 @@ public class Juego {
 	
 	
 	//METODOS DE CREACION. Crea y agrega a la lista. Agregar excepciones
-	public void crearGuerrero(String nombre ,int puntosVida, int nivelAtaque, int nivelDefensa) {
-		Guerrero guerrero = new Guerrero(nombre, puntosVida, nivelAtaque, nivelDefensa);
+	public Guerrero crearGuerrero(String nombre ,int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
+		Guerrero guerrero = new Guerrero(nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario);
 		this.guerreros.add(guerrero);
+		return guerrero;
 	};
 	
-	public void crearMago(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa) {
-		Mago mago = new Mago (nombre, puntosVida, nivelAtaque, nivelDefensa);
+	public Mago crearMago(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
+		Mago mago = new Mago (nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario);
 		this.magos.add(mago);
+		return mago;
 	};
 	
-	public void crearArquero(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, int punteria, int agilidad) {
-		Arquero arquero = new Arquero (nombre, puntosVida, nivelAtaque, nivelDefensa, punteria, agilidad);
+	public Arquero crearArquero(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario, int punteria, int agilidad) {
+		Arquero arquero = new Arquero (nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario, punteria, agilidad);
 		this.arqueros.add(arquero);
+		return arquero;
 	};
 	
 	public void crearDragon(String nombre, int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {

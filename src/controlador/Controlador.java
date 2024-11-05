@@ -8,7 +8,7 @@ import modelo.Juego;
 public class Controlador {
 
 	
-	public static void crearGuerrero(int puntosVida, int nivelAtaque, int nivelDefensa) {
+	/* public static void crearGuerrero(int puntosVida, int nivelAtaque, int nivelDefensa) {
 		Juego.getInstancia().crearGuerrero(puntosVida,nivelAtaque,nivelDefensa );
 	}
 	public static void crearMago(int puntosVida, int nivelAtaque, int nivelDefensa) {
@@ -28,8 +28,6 @@ public class Controlador {
 	public static void crearEspectro(int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {
 		Juego.getInstancia().crearEspectro(puntosVida, nivel, nivelAtaque, nivelDefensa);
 	}
-
-
-
+	*/
 
 }

@@ -40,16 +40,15 @@ public abstract class Criatura {
 	}
 	
 	public abstract int aplicarHabilidadesEspeciales(Heroe heroe);
-	public int getNivelAtaque(Heroe heroe) {
+	public int getNivelAtaque() { return this.nivelAtaque; }
+	public int nuevoNivelAtaque(Heroe heroe) {
 		return aplicarHabilidadesEspeciales(heroe);
 	}
 	
-	public int setNivelDefensa(int nivelDefensa) {
-		return nivelDefensa;
-		
+	public void setNivelDefensa(int nivelDefensa) {
+		this.nivelDefensa = nivelDefensa;
 	}
-	public int setPuntosVida(int puntosVida) {
-		return puntosVida;
-		
+	public void setPuntosVida(int puntosVida) {
+		this.puntosVida = puntosVida;
 	} 
 }

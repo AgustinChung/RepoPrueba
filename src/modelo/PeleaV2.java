@@ -14,9 +14,11 @@ public class PeleaV2 {
         while(this.heroe.getPuntosVida() > 0 && this.criatura.getPuntosVida() > 0) {
             if (turnoHeroe) {
                 this.heroeRealizaAtaque();
+                System.out.println("El heroe ataco.");
                 turnoHeroe = false;
             } else {
                 this.criaturaRealizaAtaque();
+                System.out.println("La criatura ataco");
                 turnoHeroe = true;
             }
         }
@@ -25,7 +27,7 @@ public class PeleaV2 {
     }
 
     public void heroeRealizaAtaque() {
-        int danio = this.heroe.getNivelAtaque(this.criatura);
+        int danio = this.heroe.nuevoNivelAtaque(this.criatura);
         if(this.criatura.getNivelDefensa() > 0) {
             int nivelDefensa = (danio > this.criatura.getNivelDefensa())
                     ? 0 // Rompe la defensa, pero no baja la vida
@@ -40,7 +42,7 @@ public class PeleaV2 {
     }
 
     public void criaturaRealizaAtaque() {
-        int danio = this.criatura.getNivelAtaque(this.heroe);
+        int danio = this.criatura.nuevoNivelAtaque(this.heroe);
         if (this.heroe.getNivelDefensa() > 0) {
             int nivelDefensa = (danio > this.heroe.getNivelDefensa())
                     ? 0

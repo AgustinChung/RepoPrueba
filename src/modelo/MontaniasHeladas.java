@@ -11,17 +11,21 @@ public class MontaniasHeladas extends Ubicacion{
     }
 
     public void inicializarPelea() {
-        Pelea pelea = new Pelea(this.heroe, this.criatura);
+        PeleaV2 pelea = new PeleaV2(this.heroe, this.criatura);
         pelea.iniciarPelea();
+    }
+
+    public boolean ganoElHeroe() {
+        return (this.heroe.getPuntosVida() > 0 && this.criatura.getPuntosVida() == 0);
     }
 
     public boolean juegoGanado() {
         // si gano el heroe gano la pelea y el mapa tiene el tesoro -> gano el juego
-        return (this.heroe.getPuntosVida() > 0 && this.criatura.getPuntosVida() == 0 && this.tieneTesoro);
+        return (this.ganoElHeroe() && this.tieneTesoro);
     }
 
     public void reclamarRecompensa() {
-        Recompensa recompensa = (this.heroe.getPuntosVida() > 0 && this.criatura.getPuntosVida() == 0)
+        Recompensa recompensa = (this.ganoElHeroe())
                 ? new Recompensa("Espada de Fuego", 0.20, 0)
                 : null;
         if (recompensa != null) {

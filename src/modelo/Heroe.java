@@ -7,6 +7,7 @@ public abstract class Heroe {
 	public static int contador = 0;
     protected int idHeroe;
     protected String nombre;
+	protected String nombreUsuario;
     protected int puntosVida;
     private int puntosVidaMaxima; // Para restaurar al máximo
     protected int nivelAtaque;
@@ -16,7 +17,7 @@ public abstract class Heroe {
     protected List<Recompensa> recompensas;
     
 
-    public Heroe(String nombre,int puntosVida, int nivelAtaque, int nivelDefensa) {
+    public Heroe(String nombre,int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
         this.idHeroe = contador;
         contador ++;
         this.nombre = nombre;
@@ -24,6 +25,7 @@ public abstract class Heroe {
         this.puntosVidaMaxima = puntosVida; // La vida máxima es igual a la vida inicial
         this.nivelAtaque = nivelAtaque;
         this.nivelDefensa = nivelDefensa;
+		this.nombreUsuario = nombreUsuario;
         this.nivel = 1;
         this.experiencia = 0;
         this.recompensas =  new ArrayList<>();
@@ -82,14 +84,17 @@ public abstract class Heroe {
 		this.experiencia = experiencia;
 	}
 
+	public int getNivelAtaque() { return this.nivelAtaque; }
 	public abstract int aplicarHabilidadesEspeciales(Criatura criatura);
-	public int getNivelAtaque(Criatura criatura) {
+	public int nuevoNivelAtaque(Criatura criatura) {
 		return aplicarHabilidadesEspeciales(criatura);
 	}
 
 	public void guardarRecompensa(Recompensa recompensa) {
 		recompensas.add(recompensa);
 	}
+
+	public List<Recompensa> getRecompensas() { return recompensas; }
     
 	//AGREGAR METODOS PARA VER EL MAPA Y MOVERSE A U
 }

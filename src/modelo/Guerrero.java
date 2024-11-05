@@ -4,8 +4,8 @@ public class Guerrero extends Heroe {
 	
 	int contadorGolpes;
 	
-    public Guerrero(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa) {
-		super(nombre, puntosVida, nivelAtaque, nivelDefensa);
+    public Guerrero(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
+		super(nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario);
 		this.contadorGolpes = 0;
 	}
 

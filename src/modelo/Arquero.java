@@ -5,8 +5,8 @@ public class Arquero extends Heroe{
 	private int agilidad;
 	private int punteria;
 	
-	public Arquero(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, int punteria, int agilidad) {
-		super(nombre, puntosVida, nivelAtaque, nivelDefensa);
+	public Arquero(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario, int punteria, int agilidad) {
+		super(nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario);
 		this.punteria = punteria;
 	    this.agilidad = agilidad;
 	}

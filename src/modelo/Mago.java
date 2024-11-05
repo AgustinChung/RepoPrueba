@@ -4,8 +4,8 @@ public class Mago extends Heroe{
 
 	private boolean esInmune;
 	
-	public Mago(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa) {
-		super(nombre, puntosVida, nivelAtaque, nivelDefensa);
+	public Mago(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
+		super(nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario);
 	}
 
 	@Override
