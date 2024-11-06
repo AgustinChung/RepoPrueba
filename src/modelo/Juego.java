@@ -25,7 +25,7 @@ public class Juego {
 		dragones = new ArrayList<>();
 		trolls = new ArrayList<>();
 		espectros = new ArrayList<>();
-		ubicaciones = new ArrayList<>();
+		setUbicaciones(new ArrayList<>());
 	}
 
 	//Singleton
@@ -71,7 +71,15 @@ public class Juego {
 		this.espectros.add(espectro);
 	};
 	
-	public void crearUbicacion() {};
+	public void crearUbicacion() {}
+
+	public List<Ubicacion> getUbicaciones() {
+		return ubicaciones;
+	}
+
+	public void setUbicaciones(List<Ubicacion> ubicaciones) {
+		this.ubicaciones = ubicaciones;
+	};
 	
 	
 	

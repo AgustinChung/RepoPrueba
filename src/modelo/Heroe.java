@@ -10,6 +10,7 @@ public abstract class Heroe {
 	protected String nombreUsuario;
     protected int puntosVida;
     private int puntosVidaMaxima; // Para restaurar al máximo
+	private int nivelDeDefensaMaximo; // Para restaurar al maximo
     protected int nivelAtaque;
     protected int nivelDefensa;
     protected int nivel;
@@ -22,7 +23,7 @@ public abstract class Heroe {
         contador ++;
         this.nombre = nombre;
         this.puntosVida = puntosVida;
-        this.puntosVidaMaxima = puntosVida; // La vida máxima es igual a la vida inicial
+        this.setPuntosVidaMaxima(puntosVida); // La vida máxima es igual a la vida inicial
         this.nivelAtaque = nivelAtaque;
         this.nivelDefensa = nivelDefensa;
 		this.nombreUsuario = nombreUsuario;
@@ -65,7 +66,7 @@ public abstract class Heroe {
 		return nivelDefensa;
 	}
 	public void setNivelDefensa(int nivelDefensa) {
-		this.nivelDefensa = nivelDefensa;
+		this.nivelDeDefensaMaximo = nivelDefensa;
 	}
 
 
@@ -95,7 +96,17 @@ public abstract class Heroe {
 	}
 
 	public List<Recompensa> getRecompensas() { return recompensas; }
+
+
+	public int getPuntosVidaMaxima() {
+		return this.puntosVidaMaxima;
+	}
+	public int getNivelDeDefensaMaximo() { return this.nivelDeDefensaMaximo; }
+
+
+	public void setPuntosVidaMaxima(int puntosVidaMaxima) {
+		this.puntosVidaMaxima = puntosVidaMaxima;
+	}
     
-	//AGREGAR METODOS PARA VER EL MAPA Y MOVERSE A U
 }
 

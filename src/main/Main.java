@@ -35,6 +35,7 @@ public class Main {
 
 		System.out.println("Vamos a presionar boton atacar.");
 		montaniaHelada.inicializarPelea();
+		
 		if (montaniaHelada.ganoElHeroe()) {
 			System.out.println("El guerrero le gano al dragon.");
 			montaniaHelada.reclamarRecompensa();
@@ -48,6 +49,19 @@ public class Main {
 		}
 		mostrarInformacionHeroe(guerrero);
 		mostrarInformacionCriatura(dragon);
+
+		UbicacionNeutral ubicacionNeutral = new UbicacionNeutral("Ubicacion neutral", guerrero);
+		System.out.println("Se creo la ubicacion neutral");
+		System.out.println("Ahora el heroe se dirige a la ubicación de descanso.");
+		ubicacionNeutral.descansar(guerrero);
+		System.out.println("El heroe descanso");
+		mostrarInformacionHeroe(guerrero);
+		ubicacionNeutral.reclamarRecompensa();
+		System.out.println("El heroe reclamo su recompensa.");
+		ubicacionNeutral.descansar(guerrero);
+		System.out.println("El hereoe descanso para resetear su nivel de defensa.");
+		mostrarInformacionHeroe(guerrero);
+
 	}
 
 }

@@ -6,9 +6,17 @@ public abstract class Ubicacion {
 	protected Heroe heroe;
 
 	protected Ubicacion(String nombre, Heroe heroe) {
-		this.nombre = nombre;
+		this.setNombre(nombre);
 		this.heroe = heroe;
 	}
 
 	public abstract void reclamarRecompensa();
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 }

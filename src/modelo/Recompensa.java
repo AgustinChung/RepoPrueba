@@ -11,8 +11,16 @@ public class Recompensa {
 		this.porcentajeAumentoDefensa = porcentajeAumentoDefensa;
 	}
 
-	public String nombre() { return this.nombre; }
-	public double getPorcentajeAumentoAtaque() { return this.porcentajeAumentoAtaque; }
-	public double getPorcentajeAumentoDefensa() { return this.porcentajeAumentoDefensa; }
+	public String nombre() {
+		return this.nombre;
+	}
+	
+	public double getPorcentajeAumentoAtaque() { 
+		return this.porcentajeAumentoAtaque; 
+	}
+	
+	public double getPorcentajeAumentoDefensa() { 
+		return this.porcentajeAumentoDefensa; 
+	}
 	
 }
