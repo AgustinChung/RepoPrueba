@@ -1,0 +1,160 @@
+@startuml
+
+class Juego {
+-personajes: List<Personaje>
+-criaturas: List<Criaturas>
+-misiones: List<MisionSecundaria>
+
++juego(personajes: List<Personaje>,criaturas: List<Criaturas>): Juego
++agregarPersonaje(personaje: Personaje): void
++agregarCriatura(criatura: Criatura): void
++agregarMision(mision: MisionSecundaria): void
++buscarPersonaje(personaje: Personaje): Personaje
++buscarCriatura(criatura: Criatura): Criatura
++buscarMision(mision: MisionSecundaria): Criatura
+}
+
+abstract class Personaje{
+-nombre: String
+-puntosVida: int
+-nivelAtaque: int
+-nivelDefensa: int
+-nivelExperiencia: int
+
+#nivelDefensaEsCero(nivelDefensa: int): boolean
+#usarMapa(mapa: Mapa): void
+#viajarAUbicacion(ubicacion: Ubicacion): void
+#atacar(): 
+#recibirDanio():
+#calcularDanio(): 
+#subirNivelExp(experiencia: int): void
+#notificarVictoria(): void
+#notificarDerrota(): void
+}
+
+
+class Guerrero extends Personaje{
+-contador: {static} int
+-golpesDados: int
+
++guerrero(nombre: String, puntosVida: int,nivelAtaque: int,nivelDefensa: int,nivelExperiencia: int): Guerrero
++duplicarAtaque(): void
++viajar(ubicacion: Ubicacion): void
++recolectarRecompensa(mision: MisionSecundaria): void
+}
+
+class Mago extends Personaje{
+
++mago(nombre: String, puntosVida: int,nivelAtaque: int,nivelDefensa: int,nivelExperiencia: int): Mago
++curar(): void
++esInmune(): void
+}
+
+class Arquero extends Personaje{
+-nivelPunteria: int
+-nivelAgilidad: int
+
++arquero(nombre: String, puntosVida: int,nivelAtaque: int,nivelDefensa: int,nivelExperiencia: int): Arquero
++esquivarGolpe(nivelPunteria: int): void
++aumentarPunteria(nivelPunteria: int, enemigo: Criatura): void
+
+}
+
+
+abstract class Criatura{
+-nombre: String
+-puntosVida: int
+-nivel: int
+-nivelAtaque: int
+-nivelDefensa: int
+
+#atacar(): 
+#recibirDanio():
+#nivelDefensaEsCero(nivelDefensa: int): boolean
+#aumentarAtaque(): void
+#aumentarDefensa(): void
+#darExperiencia(): void
+}
+
+class Dragon extends Criatura{
++dragon(nombre: String,puntosVida: int,nivelAtaque: int,nivelDefensa: int): Dragon
++aumentarAtaque(enemigo: Personaje, nivelAtaque: int): void
++darExperiencia(personaje: Personaje, nivel: int): void
+}
+
+class Troll extends Criatura{
++troll(nombre: String,puntosVida: int,nivelAtaque: int,nivelDefensa: int): Troll
++aumentarDefensa(enemigo: Personaje,nivelDefensa: int): void
++darExperiencia(personaje: Personaje, nivel: int): void
+}
+
+class Espectro extends Criatura{
++espectro(nombre: String,puntosVida: int,nivelAtaque: int,nivelDefensa: int): Espectro
++aumentarAtaque(enemigo: Personaje, nivelAtaque: int): void
++darExperiencia(personaje: Personaje, nivel: int): void
+}
+
+class Mapa{
+-ubicaciones: List<Ubicacion>
+
++mostrarUbicaciones(List<Ubicacion>): List <Ubicacion>
++agregarUbicaciones(ubicacion: Ubicacion): void
+}
+
+
+class Ubicacion{
+-nombre: String
+-tipo: TipoUbicacion
+-personaje: Personaje
+-criatura: Criatura
+-esNeutral: boolean
+-tieneTesoro: boolean
+-misionSecundaria: MisionSecundaria
+
++ubicacion(criatura: Criatura, esNeutral: boolean): Ubicacion
++agregarPersonaje(personaje: Personaje): void
++mejorarNivel(personaje: Personaje): void
++descansar(personaje: Personaje): void
++reclamarRecompensa(personaje: Personaje, misionSecundaria: MisionSecundaria): void
+}
+
+
+class MisionSecundaria{
+-objetivo: TipoObjetivo
+-misionCompleta: boolean
++obtenerRecompensa(objetivo: TipoObjetivo): void
+}
+
+enum TipoObjetivo{
+DERROTAR DRAGON NORTE
+RECUPERAR AMULETO
+ELIMINAR ESPECTRO
+LIMPIAR ALDEA
+}
+
+enum TipoUbicacion{
+MONTANIAS HELADAS
+BOSQUE DE LOS SUSURROS
+PANTANO OSCURO
+ALDEA DE LOS SIRITH
+}
+
+Juego "1" *-- "0..*" Personaje
+Juego "1" *-- "0..*" Criatura
+Juego "1" *-- "0..*" MisionSecundaria 
+
+Personaje -> Mapa
+Personaje -> Criatura
+
+Criatura -> Personaje
+
+Mapa "1" *-- "1..*" Ubicacion
+
+Ubicacion "1" o-- "1" Personaje
+Ubicacion "1" o-- "1" Criatura
+Ubicacion -> TipoUbicacion
+Ubicacion o-- MisionSecundaria
+
+
+MisionSecundaria -> TipoObjetivo
+@enduml
