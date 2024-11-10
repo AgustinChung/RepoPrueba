@@ -26,7 +26,7 @@ public class UbicacionNeutral extends Ubicacion{
 				this.heroe.setNivelAtaque((int) nuevoNivelAtaque);
 			}
 			if (recompensa.getPorcentajeAumentoDefensa() != 0) {
-				double nuevoNivelDefensa = this.heroe.getNivelDefensa() + this.heroe.getNivelDefensa() * recompensa.getPorcentajeAumentoDefensa();
+				double nuevoNivelDefensa = this.heroe.getNivelDeDefensaMaximo() + this.heroe.getNivelDeDefensaMaximo() * recompensa.getPorcentajeAumentoDefensa();
 				this.heroe.setNivelDefensa((int) nuevoNivelDefensa);
 			}
 		}
