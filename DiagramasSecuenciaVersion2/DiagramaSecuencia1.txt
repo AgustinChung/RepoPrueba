@@ -1,0 +1,50 @@
+@startuml
+
+actor Main
+participant Guerrero
+participant Mapa
+participant Ubicacion
+participant Dragon
+
+
+activate Guerrero
+Main-> Guerrero : viajarAUbicacion(ubicacion: Ubicacion)
+
+activate Mapa
+Guerrero -> Mapa : mostrarUbicaciones(List<Ubicacion>): List <Ubicacion>
+activate Ubicacion
+Mapa -> Ubicacion : agregarPersonaje(personaje: Guerrero): void
+Ubicacion -> Ubicacion: new Ubicacion(nombre: String, tipo: TipoUbicacion, personaje: Personaje, criatura: Criatura, esNeutral: boolean, tieneTesoro: boolean): Ubicacion
+Ubicacion --> Mapa: Ubicacion
+Mapa --> Mapa: agregarUbicacion(ubicacion: Ubicacion): void
+Mapa --> Guerrero: Ubicaciones
+
+deactivate Mapa
+deactivate Ubicacion
+
+Main -> Guerrero : atacar(enemigo: Dragon): void
+
+loop hasta que guerrero o dragon pierda todos los puntos de vida
+    Guerrero -> Guerrero : calcularDanio(nivelAtaque: int, enemigo: Dragon): int
+activate Dragon
+    Guerrero -> Dragon : recibirDanio(danio: int): void
+
+    alt Guerrero no ha derrotado al dragon
+        Dragon -> Dragon : calcularDanio(nivelAtaque: int, enemigo: Guerrero): int
+        Dragon -> Guerrero : recibirDanio(danio: int): void
+    end
+end
+
+alt Guerrero gana
+    Guerrero -> Dragon: darExperiencia(nivelCriatura: nivel): int
+    Dragon --> Guerrero: experiencia
+deactivate Dragon
+    Guerrero -> Guerrero: subirNivelExp(experiencia: int): void
+    Guerrero --> Main: Notificar Victoria
+    
+else Dragon gana
+    Guerrero--> Main: Notificar Derrota
+
+deactivate Guerrero
+end
+@enduml

@@ -33,5 +33,6 @@ public class MainMVC {
         mostrarUbicacion(Controlador.viajar("Montanias Heladas"));
         System.out.println(Controlador.ganoHeroe(Controlador.viajar("Montanias Heladas").getCriatura()));
         mostrarInformacionHeroe(Controlador.getHeroe());
+
     }
 }

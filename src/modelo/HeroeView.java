@@ -7,6 +7,7 @@ public class HeroeView {
     private int nivelAtaque;
     private int nivelDefensa;
 
+
     public HeroeView(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
         this.nombre = nombre;
         this.puntosVida = puntosVida;
@@ -14,6 +15,7 @@ public class HeroeView {
         this.nivelDefensa = nivelDefensa;
         this.nombreUsuario = nombreUsuario;
     }
+
 
     public String getNombre() {
         return this.nombre;

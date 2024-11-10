@@ -10,6 +10,7 @@ public abstract class Ubicacion {
 		this.setNombre(nombre);
 		this.heroe = heroe;
 		this.estaActivo = estaActivo;
+
 	}
 
 	public abstract void reclamarRecompensa();
@@ -25,4 +26,5 @@ public abstract class Ubicacion {
 	public boolean getEstaActivo() { return this.estaActivo; }
 
 	public abstract Criatura getCriatura();
+
 }

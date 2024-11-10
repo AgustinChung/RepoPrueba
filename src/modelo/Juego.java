@@ -13,6 +13,7 @@ public class Juego {
 	private Mago usuarioMago;
 	private Arquero usuarioArquero;
 	private Heroe usuarioHeroe;
+
 	private List<Dragon> dragones;
 	private List<Troll> trolls;
 	private List<Espectro> espectros;
@@ -20,10 +21,12 @@ public class Juego {
 	
 	//Constructor
 	private Juego() {
+
 		dragones = new ArrayList<>();
 		trolls = new ArrayList<>();
 		espectros = new ArrayList<>();
 		ubicaciones = new ArrayList<>();
+
 	}
 
 	//Singleton
@@ -38,19 +41,24 @@ public class Juego {
 	//METODOS DE CREACION. Crea y agrega a la lista. Agregar excepciones
 	public Guerrero crearGuerrero(String nombre ,int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
 		Guerrero guerrero = new Guerrero(nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario);
+
 		this.usuarioGuerrero = guerrero;
 		this.usuarioHeroe = guerrero;
+
 		return guerrero;
 	};
 	
 	public Mago crearMago(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
 		Mago mago = new Mago (nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario);
+
 		this.usuarioMago = mago;
+
 		return mago;
 	};
 	
 	public Arquero crearArquero(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario, int punteria, int agilidad) {
 		Arquero arquero = new Arquero (nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario, punteria, agilidad);
+
 		this.usuarioArquero = arquero;
 		return arquero;
 	};
@@ -84,6 +92,7 @@ public class Juego {
 		// tenemos que agregar todas las ubicaciones aca
 	}
 
+
 	public List<Ubicacion> getUbicaciones() {
 		return ubicaciones;
 	}
@@ -96,21 +105,5 @@ public class Juego {
 		PeleaV2 pelea = new PeleaV2(this.usuarioHeroe, criatura);
 		return pelea.iniciarPelea();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

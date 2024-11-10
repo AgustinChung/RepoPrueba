@@ -6,6 +6,7 @@ public class MontaniasHeladas extends Ubicacion{
 
     public MontaniasHeladas(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo, boolean tieneTesoro) {
         super(nombre, heroe, estaActivo);
+
         this.criatura = criatura;
         this.tieneTesoro = tieneTesoro;
     }

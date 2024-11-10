@@ -7,6 +7,7 @@ public class Bosque extends Ubicacion {
 	
 	public Bosque(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo ,boolean tieneTesoro) {
         super(nombre, heroe, estaActivo);
+
         this.criatura = criatura;
         this.tieneTesoro = tieneTesoro;
     }
@@ -37,5 +38,4 @@ public class Bosque extends Ubicacion {
     public Criatura getCriatura() {
         return this.criatura;
     }
-
 }

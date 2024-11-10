@@ -6,6 +6,7 @@ public class UbicacionNeutral extends Ubicacion{
 
 	public UbicacionNeutral(String nombre, Heroe heroe, boolean estaActivo) {
 		super(nombre, heroe, estaActivo);
+
 	}
 
 	//setea al maximo los puntos de vida del heroe
@@ -30,9 +31,11 @@ public class UbicacionNeutral extends Ubicacion{
 				this.heroe.setNivelDefensa((int) nuevoNivelDefensa);
 			}
 		}
+
 	}
 
 	public Criatura getCriatura() {
 		return null;
+
 	}
 }
