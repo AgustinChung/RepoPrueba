@@ -6,7 +6,7 @@ import java.util.List;
 //FACHADA. Quien va a recibir las cosas
 public class Juego {
 	//Declaracion de la instancia para el singleton
-	// private static Juego instancia;
+	private static Juego instancia;
 	
 	//Listas 
 	private List<Guerrero> guerreros;
@@ -18,7 +18,7 @@ public class Juego {
 	private List<Ubicacion> ubicaciones;
 	
 	//Constructor
-	public Juego() {
+	private Juego() {
 		guerreros = new ArrayList<>();
 		magos = new ArrayList<>();
 		arqueros = new ArrayList<>();
@@ -29,12 +29,12 @@ public class Juego {
 	}
 
 	//Singleton
-	//public static Juego getInstancia() {
-	//	if (instancia == null) {
-	//		instancia = new Juego();
-	//	}
-	//	return instancia;
-	//}
+	public static Juego getInstancia() {
+		if (instancia == null) {
+			instancia = new Juego();
+		}
+		return instancia;
+	}
 	
 	
 	//METODOS DE CREACION. Crea y agrega a la lista. Agregar excepciones

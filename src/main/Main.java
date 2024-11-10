@@ -17,7 +17,7 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		Juego juego = new Juego();
+		/* Juego juego = new Juego();
 		System.out.println("Inicia el juego\n");
 
 		Guerrero guerrero = juego.crearGuerrero("Guerrero", 100, 50, 30, "manuel123");
@@ -62,6 +62,7 @@ public class Main {
 		System.out.println("El hereoe descanso para resetear su nivel de defensa.");
 		mostrarInformacionHeroe(guerrero);
 
+		 */
 	}
 
 }

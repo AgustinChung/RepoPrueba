@@ -107,6 +107,9 @@ public abstract class Heroe {
 	public void setPuntosVidaMaxima(int puntosVidaMaxima) {
 		this.puntosVidaMaxima = puntosVidaMaxima;
 	}
-    
+
+	public HeroeView toView() {
+		return new HeroeView(this.nombre, this.puntosVida, this.nivelAtaque, this.nivelDefensa, this.nombreUsuario);
+	}
 }
 

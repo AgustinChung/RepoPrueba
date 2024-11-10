@@ -1,5 +1,7 @@
 package controlador;
 
+import modelo.Guerrero;
+import modelo.HeroeView;
 import modelo.Juego;
 
 
@@ -8,26 +10,25 @@ import modelo.Juego;
 public class Controlador {
 
 	
-	/* public static void crearGuerrero(int puntosVida, int nivelAtaque, int nivelDefensa) {
-		Juego.getInstancia().crearGuerrero(puntosVida,nivelAtaque,nivelDefensa );
+	public static HeroeView crearGuerrero(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
+		Guerrero guerrero = Juego.getInstancia().crearGuerrero(nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario );
+		return guerrero.toView();
 	}
-	public static void crearMago(int puntosVida, int nivelAtaque, int nivelDefensa) {
-		Juego.getInstancia().crearMago(puntosVida,nivelAtaque,nivelDefensa );
+	public static void crearMago(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
+		Juego.getInstancia().crearMago(nombre, puntosVida,nivelAtaque,nivelDefensa, nombreUsuario);
 	}
-	public static void crearArquero(int puntosVida, int nivelAtaque, int nivelDefensa) {
-		Juego.getInstancia().crearArquero(puntosVida,nivelAtaque,nivelDefensa );
+	public static void crearArquero(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario, int punteria, int agilidad) {
+		Juego.getInstancia().crearArquero(nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario, punteria, agilidad);
 	}
-	
-	
-	public static void crearDragon(int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {
-		Juego.getInstancia().crearDragon(puntosVida, nivel, nivelAtaque, nivelDefensa );
+	public static void crearDragon(String nombre, int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {
+		Juego.getInstancia().crearDragon(nombre, puntosVida, nivel, nivelAtaque, nivelDefensa );
 	}
-	public static void crearTroll(int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {
-		Juego.getInstancia().crearTroll(puntosVida, nivel, nivelAtaque, nivelDefensa );
+	public static void crearTroll(String nombre, int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {
+		Juego.getInstancia().crearTroll(nombre, puntosVida, nivel, nivelAtaque, nivelDefensa );
 	}
-	public static void crearEspectro(int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {
-		Juego.getInstancia().crearEspectro(puntosVida, nivel, nivelAtaque, nivelDefensa);
+	public static void crearEspectro(String nombre, int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {
+		Juego.getInstancia().crearEspectro(nombre, puntosVida, nivel, nivelAtaque, nivelDefensa);
 	}
-	*/
+
 
 }
