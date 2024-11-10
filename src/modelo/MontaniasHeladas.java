@@ -4,8 +4,9 @@ public class MontaniasHeladas extends Ubicacion{
     private Criatura criatura;
     private boolean tieneTesoro;
 
-    public MontaniasHeladas(String nombre, Heroe heroe, Criatura criatura, boolean tieneTesoro) {
-        super(nombre, heroe);
+    public MontaniasHeladas(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo, boolean tieneTesoro) {
+        super(nombre, heroe, estaActivo);
+
         this.criatura = criatura;
         this.tieneTesoro = tieneTesoro;
     }
@@ -31,5 +32,9 @@ public class MontaniasHeladas extends Ubicacion{
         if (recompensa != null) {
             this.heroe.guardarRecompensa(recompensa);
         }
+    }
+
+    public Criatura getCriatura() {
+        return this.criatura;
     }
 }

@@ -9,9 +9,11 @@ public class Juego {
 	private static Juego instancia;
 	
 	//Listas 
-	private List<Guerrero> guerreros;
-	private List<Mago> magos;
-	private List<Arquero> arqueros;
+	private Guerrero usuarioGuerrero;
+	private Mago usuarioMago;
+	private Arquero usuarioArquero;
+	private Heroe usuarioHeroe;
+
 	private List<Dragon> dragones;
 	private List<Troll> trolls;
 	private List<Espectro> espectros;
@@ -19,13 +21,12 @@ public class Juego {
 	
 	//Constructor
 	private Juego() {
-		guerreros = new ArrayList<>();
-		magos = new ArrayList<>();
-		arqueros = new ArrayList<>();
+
 		dragones = new ArrayList<>();
 		trolls = new ArrayList<>();
 		espectros = new ArrayList<>();
-		setUbicaciones(new ArrayList<>());
+		ubicaciones = new ArrayList<>();
+
 	}
 
 	//Singleton
@@ -40,63 +41,69 @@ public class Juego {
 	//METODOS DE CREACION. Crea y agrega a la lista. Agregar excepciones
 	public Guerrero crearGuerrero(String nombre ,int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
 		Guerrero guerrero = new Guerrero(nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario);
-		this.guerreros.add(guerrero);
+
+		this.usuarioGuerrero = guerrero;
+		this.usuarioHeroe = guerrero;
+
 		return guerrero;
 	};
 	
 	public Mago crearMago(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
 		Mago mago = new Mago (nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario);
-		this.magos.add(mago);
+
+		this.usuarioMago = mago;
+
 		return mago;
 	};
 	
 	public Arquero crearArquero(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario, int punteria, int agilidad) {
 		Arquero arquero = new Arquero (nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario, punteria, agilidad);
-		this.arqueros.add(arquero);
+
+		this.usuarioArquero = arquero;
 		return arquero;
 	};
 	
-	public void crearDragon(String nombre, int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {
+	public Dragon crearDragon(String nombre, int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {
 		Dragon dragon = new Dragon (nombre, puntosVida, nivel, nivelAtaque, nivelDefensa);
 		this.dragones.add(dragon);
+		return dragon;
 	};
 	
-	public void crearTroll(String nombre, int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {
+	public Troll crearTroll(String nombre, int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {
 		Troll troll = new Troll (nombre, puntosVida, nivel, nivelAtaque, nivelDefensa);
 		this.trolls.add(troll);
+		return troll;
 	};
 	
-	public void crearEspectro(String nombre, int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {
+	public Espectro crearEspectro(String nombre, int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {
 		Espectro espectro = new Espectro (nombre, puntosVida, nivel, nivelAtaque, nivelDefensa);
 		this.espectros.add(espectro);
+		return espectro;
 	};
-	
-	public void crearUbicacion() {}
+
+	public void crearMontaniasHeladas(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo, boolean tieneTesoro) {
+		MontaniasHeladas montaniasHeladas = new MontaniasHeladas(nombre, this.usuarioHeroe, criatura, estaActivo, tieneTesoro);
+		this.ubicaciones.add(montaniasHeladas);
+	}
+
+	public void crearMapa() {
+		Dragon dragon = this.crearDragon("Dragon", 80, 1, 40, 20);
+		this.crearMontaniasHeladas("Montanias Heladas", this.usuarioHeroe, dragon, true, false);
+		// tenemos que agregar todas las ubicaciones aca
+	}
+
 
 	public List<Ubicacion> getUbicaciones() {
 		return ubicaciones;
 	}
 
-	public void setUbicaciones(List<Ubicacion> ubicaciones) {
-		this.ubicaciones = ubicaciones;
-	};
+	public HeroeView HeroeToView() {
+		return this.usuarioHeroe.toView();
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public boolean generarPelea(Criatura criatura) {
+		PeleaV2 pelea = new PeleaV2(this.usuarioHeroe, criatura);
+		return pelea.iniciarPelea();
+	}
 	
 }

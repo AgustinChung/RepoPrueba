@@ -5,8 +5,9 @@ public class PantanoOscuro extends Ubicacion {
 	private Criatura criatura;
     private boolean tieneTesoro;
 	
-	public PantanoOscuro(String nombre, Heroe heroe, Criatura criatura, boolean tieneTesoro) {
-        super(nombre, heroe);
+	public PantanoOscuro(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo, boolean tieneTesoro) {
+        super(nombre, heroe, estaActivo);
+
         this.criatura = criatura;
         this.tieneTesoro = tieneTesoro;
     }
@@ -33,5 +34,10 @@ public class PantanoOscuro extends Ubicacion {
             this.heroe.guardarRecompensa(recompensa);
         }
     }
+
+    public Criatura getCriatura() {
+        return this.criatura;
+    }
+
 	
 }
