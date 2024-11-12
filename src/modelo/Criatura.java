@@ -2,6 +2,8 @@ package modelo;
 
 public abstract class Criatura {
 	//ATRIBUTOS
+	private static int contador = 0;
+
 	protected String idCriatura;
 	protected String nombre;
 	protected int puntosVida;
@@ -11,6 +13,8 @@ public abstract class Criatura {
 	
 	//Constructor
 	public Criatura(String nombre,int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {
+		contador++;
+		this.idCriatura = String.valueOf(contador);
 		this.nombre = nombre;
 		this.puntosVida = puntosVida;
 		this.nivel = nivel;
@@ -53,5 +57,9 @@ public abstract class Criatura {
 	}
 	public void setPuntosVida(int puntosVida) {
 		this.puntosVida = puntosVida;
-	} 
+	}
+
+	public CriaturaView toView() {
+		return new CriaturaView(this.idCriatura, this.nombre, this.puntosVida, this.nivel, this.nivelAtaque, this.nivelDefensa);
+	}
 }

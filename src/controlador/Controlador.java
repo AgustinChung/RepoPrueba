@@ -1,10 +1,8 @@
 package controlador;
 
-import modelo.Criatura;
-import modelo.HeroeView;
-import modelo.Juego;
-import modelo.Ubicacion;
+import modelo.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -34,28 +32,33 @@ public class Controlador {
 	}
 
 	public static HeroeView getHeroe() {
-		return Juego.getInstancia().HeroeToView();
+		return Juego.getInstancia().getHeroe().toView();
 	}
 
-	public static List<Ubicacion> mostrarMapa() {
-		return Juego.getInstancia().getUbicaciones();
+	public static List<UbicacionView> mostrarMapa() {
+		List<UbicacionView> ubicacionesView = new ArrayList<UbicacionView>();
+		List<Ubicacion> ubicaciones = Juego.getInstancia().getUbicaciones();
+		for (Ubicacion ubicacion : ubicaciones) {
+			ubicacionesView.add(ubicacion.toView());
+		}
+		return ubicacionesView;
 	}
 
 	// el usuario apreta el boton de la ubicacion a donde quiere viajar. El view, llama a controlador.viajar(nombreUbicacion), el controlador devuelve
 	// la ubicacion a la que el usuario quiso acceder.
-	public static Ubicacion viajar(String nombreUbicacion) {
+	public static UbicacionView viajar(String nombreUbicacion) {
 		// esto tiene que estar hecho con object View ubicacion view
 		List<Ubicacion> ubicaciones = Juego.getInstancia().getUbicaciones();
 		for (Ubicacion ubicacion : ubicaciones) {
-			if (ubicacion.getNombre() == nombreUbicacion && ubicacion.getEstaActivo()) {
-				return ubicacion; // ubicacion.toView() -> dentro debe tener el nombre de la ubicacion y una criatura view.
+			if (ubicacion.nombre() == nombreUbicacion && ubicacion.getEstaActivo()) {
+				return ubicacion.toView();
 			}
 		}
 		return null;
 	}
 
-	public static boolean ganoHeroe(Criatura criatura) { // preguntarle al profe si esta bien arrancar la secuencia con este metodo
-		return Juego.getInstancia().generarPelea(criatura);
+	public static boolean ganoHeroe(CriaturaView criatura) { // preguntarle al profe si esta bien arrancar la secuencia con este metodo
+		return Juego.getInstancia().generarPelea(criatura.getIdCriatura());
 	}
 
 }

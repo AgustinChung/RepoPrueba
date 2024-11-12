@@ -13,20 +13,13 @@ public class Juego {
 	private Mago usuarioMago;
 	private Arquero usuarioArquero;
 	private Heroe usuarioHeroe;
-
-	private List<Dragon> dragones;
-	private List<Troll> trolls;
-	private List<Espectro> espectros;
+	private List<Criatura> criaturas;
 	private List<Ubicacion> ubicaciones;
 	
 	//Constructor
 	private Juego() {
-
-		dragones = new ArrayList<>();
-		trolls = new ArrayList<>();
-		espectros = new ArrayList<>();
+		criaturas = new ArrayList<>();
 		ubicaciones = new ArrayList<>();
-
 	}
 
 	//Singleton
@@ -41,43 +34,38 @@ public class Juego {
 	//METODOS DE CREACION. Crea y agrega a la lista. Agregar excepciones
 	public Guerrero crearGuerrero(String nombre ,int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
 		Guerrero guerrero = new Guerrero(nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario);
-
 		this.usuarioGuerrero = guerrero;
 		this.usuarioHeroe = guerrero;
-
 		return guerrero;
 	};
 	
 	public Mago crearMago(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
 		Mago mago = new Mago (nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario);
-
 		this.usuarioMago = mago;
-
 		return mago;
 	};
 	
 	public Arquero crearArquero(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario, int punteria, int agilidad) {
 		Arquero arquero = new Arquero (nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario, punteria, agilidad);
-
 		this.usuarioArquero = arquero;
 		return arquero;
 	};
 	
 	public Dragon crearDragon(String nombre, int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {
 		Dragon dragon = new Dragon (nombre, puntosVida, nivel, nivelAtaque, nivelDefensa);
-		this.dragones.add(dragon);
+		this.criaturas.add(dragon);
 		return dragon;
 	};
 	
 	public Troll crearTroll(String nombre, int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {
 		Troll troll = new Troll (nombre, puntosVida, nivel, nivelAtaque, nivelDefensa);
-		this.trolls.add(troll);
+		this.criaturas.add(troll);
 		return troll;
 	};
 	
 	public Espectro crearEspectro(String nombre, int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {
 		Espectro espectro = new Espectro (nombre, puntosVida, nivel, nivelAtaque, nivelDefensa);
-		this.espectros.add(espectro);
+		this.criaturas.add(espectro);
 		return espectro;
 	};
 
@@ -92,18 +80,24 @@ public class Juego {
 		// tenemos que agregar todas las ubicaciones aca
 	}
 
-
 	public List<Ubicacion> getUbicaciones() {
 		return ubicaciones;
 	}
 
-	public HeroeView HeroeToView() {
-		return this.usuarioHeroe.toView();
-	}
+	public Heroe getHeroe() { return this.usuarioHeroe; }
 	
-	public boolean generarPelea(Criatura criatura) {
+	public boolean generarPelea(String idCriatura) {
+		Criatura criatura = this.buscarCriatura(idCriatura);
 		PeleaV2 pelea = new PeleaV2(this.usuarioHeroe, criatura);
 		return pelea.iniciarPelea();
 	}
-	
+
+	private Criatura buscarCriatura(String id) {
+		for (Criatura criatura : criaturas) {
+			if (criatura.idCriatura == id) {
+				return criatura;
+			}
+		}
+		return null;
+	}
 }

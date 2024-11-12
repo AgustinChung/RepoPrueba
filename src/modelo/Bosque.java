@@ -7,18 +7,17 @@ public class Bosque extends Ubicacion {
 	
 	public Bosque(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo ,boolean tieneTesoro) {
         super(nombre, heroe, estaActivo);
-
         this.criatura = criatura;
         this.tieneTesoro = tieneTesoro;
     }
 	
 	public void inicializarPelea() {
-        PeleaV2 pelea = new PeleaV2(this.heroe, this.criatura);
+        PeleaV2 pelea = new PeleaV2(this.getHeroe(), this.criatura);
         pelea.iniciarPelea();
     }
 
     public boolean ganoElHeroe() {
-        return (this.heroe.getPuntosVida() > 0 && this.criatura.getPuntosVida() == 0);
+        return (this.getHeroe().getPuntosVida() > 0 && this.criatura.getPuntosVida() == 0);
     }
 
     public boolean juegoGanado() {
@@ -31,11 +30,16 @@ public class Bosque extends Ubicacion {
                 ? new Recompensa("Amuleto perdido", 0, 0.15)
                 : null;
         if (recompensa != null) {
-            this.heroe.guardarRecompensa(recompensa);
+            this.getHeroe().guardarRecompensa(recompensa);
         }
     }
 
     public Criatura getCriatura() {
         return this.criatura;
     }
+
+    public UbicacionView toView() {
+        return new UbicacionView(this.getNombre(), this.getHeroe(), this.criatura);
+    }
+
 }

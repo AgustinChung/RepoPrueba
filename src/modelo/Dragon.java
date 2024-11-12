@@ -9,7 +9,7 @@ public class Dragon extends Criatura{
 	
 	public int aplicarHabilidadesEspeciales(Heroe enemigo) {
 	    if (enemigo.getNombre() == "Guerrero") {
-	        nivelAtaque += nivelAtaque * 0.3;
+	        this.nivelAtaque += (int) (this.nivelAtaque * 0.3);
 	    }
 	    return nivelAtaque;
 	}

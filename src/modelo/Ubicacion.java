@@ -3,21 +3,22 @@ package modelo;
 public abstract class Ubicacion {
 	//ATRIBUTOS
 	private String nombre;
-	protected Heroe heroe;
-	protected boolean estaActivo;
+	private Heroe heroe;
+	private boolean estaActivo;
 
 	protected Ubicacion(String nombre, Heroe heroe, boolean estaActivo) {
 		this.setNombre(nombre);
 		this.heroe = heroe;
 		this.estaActivo = estaActivo;
-
 	}
 
 	public abstract void reclamarRecompensa();
 
-	public String getNombre() {
-		return nombre;
+
+	protected String getNombre() {
+		return this.nombre;
 	}
+	public String nombre() { return this.nombre; }
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -27,4 +28,7 @@ public abstract class Ubicacion {
 
 	public abstract Criatura getCriatura();
 
+	protected Heroe getHeroe() { return this.heroe; }
+
+	public abstract UbicacionView toView();
 }

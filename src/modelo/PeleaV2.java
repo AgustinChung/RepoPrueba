@@ -10,7 +10,6 @@ public class PeleaV2 {
     }
 
     public boolean iniciarPelea() {
-
         boolean turnoHeroe = true;
         while(this.heroe.getPuntosVida() > 0 && this.criatura.getPuntosVida() > 0) {
             if (turnoHeroe) {
@@ -23,9 +22,7 @@ public class PeleaV2 {
                 turnoHeroe = true;
             }
         }
-
         return (this.heroe.getPuntosVida() > 0);
-
     }
 
     public void heroeRealizaAtaque() {
