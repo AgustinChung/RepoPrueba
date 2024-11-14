@@ -19,6 +19,7 @@ public class MontaniasHeladas extends Ubicacion{
         return (this.getHeroe().getPuntosVida() > 0 && this.criatura.getPuntosVida() == 0);
     }
 
+
     public boolean juegoGanado() {
         // si gano el heroe gano la pelea y el mapa tiene el tesoro -> gano el juego
         return (this.ganoElHeroe() && this.tieneTesoro);

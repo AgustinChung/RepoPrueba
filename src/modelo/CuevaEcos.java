@@ -5,6 +5,7 @@ package modelo;
 public class CuevaEcos extends Ubicacion {
     private Criatura criatura;
 
+
     public CuevaEcos(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo) {
         super(nombre, heroe, estaActivo);
         this.criatura = criatura;

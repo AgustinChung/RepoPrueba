@@ -3,6 +3,7 @@
 package modelo;
 
 public class RuinasLyrath extends Ubicacion {
+
     private Criatura criatura;
 
     public RuinasLyrath(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo) {
