@@ -4,42 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Heroe {
-	public static int contador = 0;
-    protected int idHeroe;
-    protected String nombre;
+	protected String nombre;
 	protected String nombreUsuario;
     protected int puntosVida;
     private int puntosVidaMaxima; // Para restaurar al máximo
 	private int nivelDeDefensaMaximo; // Para restaurar al maximo
     protected int nivelAtaque;
     protected int nivelDefensa;
+	protected int nivelDefensaMaximo;
     protected int nivel;
     protected int experiencia;
     protected List<Recompensa> recompensas;
     
 
     public Heroe(String nombre,int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
-        this.idHeroe = contador;
-        contador ++;
         this.nombre = nombre;
         this.puntosVida = puntosVida;
-        this.setPuntosVidaMaxima(puntosVida); // La vida máxima es igual a la vida inicial
+        this.puntosVidaMaxima = puntosVida;
         this.nivelAtaque = nivelAtaque;
         this.nivelDefensa = nivelDefensa;
+		this.nivelDefensaMaximo = nivelDefensa;
 		this.nombreUsuario = nombreUsuario;
         this.nivel = 1;
         this.experiencia = 0;
         this.recompensas =  new ArrayList<>();
     }
-
-
-	public int getIdHeroe() {
-		return idHeroe;
-	}
-	public void setIdHeroe(int idHeroe) {
-		this.idHeroe = idHeroe;
-	}
-
 
 	public String getNombre() {
 		return nombre;
@@ -66,7 +55,7 @@ public abstract class Heroe {
 		return nivelDefensa;
 	}
 	public void setNivelDefensa(int nivelDefensa) {
-		this.nivelDeDefensaMaximo = nivelDefensa;
+		this.nivelDefensa = nivelDefensa;
 	}
 
 
@@ -109,7 +98,11 @@ public abstract class Heroe {
 	}
 
 	public HeroeView toView() {
-		return new HeroeView(this.nombre, this.puntosVida, this.nivelAtaque, this.nivelDefensa, this.nombreUsuario);
+		List<RecompensaView> recompensasViews = new ArrayList<>();
+		for (Recompensa recompensa : this.recompensas) {
+			recompensasViews.add(recompensa.toView());
+		}
+		return new HeroeView(this.nombre, this.puntosVida, this.nivelAtaque, this.nivelDefensa, this.nombreUsuario, recompensasViews);
 	}
 }
 

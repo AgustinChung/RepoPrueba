@@ -17,8 +17,7 @@ public class UbicacionNeutral extends Ubicacion{
 
 	//agarra los datos de la recompensa y setea nuevos valores en el ataque y defensa del heroe.
 	//VER SI RECIBE UNA SOLA RECOMPENSA O UNA LISTA DE RECOMPENSAS.
-	@Override
-	public void reclamarRecompensa() {
+	public Recompensa reclamarRecompensa() {
 		List<Recompensa> recompensas = this.getHeroe().getRecompensas();
 		for (Recompensa recompensa : recompensas) {
 			if (recompensa.getPorcentajeAumentoAtaque() != 0) {
@@ -30,6 +29,7 @@ public class UbicacionNeutral extends Ubicacion{
 				this.getHeroe().setNivelDefensa((int) nuevoNivelDefensa);
 			}
 		}
+		return null;
 	}
 
 	public Criatura getCriatura() {
@@ -37,6 +37,6 @@ public class UbicacionNeutral extends Ubicacion{
 	}
 
 	public UbicacionView toView() {
-		return new UbicacionView(this.getNombre(), this.getHeroe(), null);
+		return new UbicacionView(this.getIdUbicacion(), this.getNombre(), this.getHeroe(), null);
 	}
 }
