@@ -9,19 +9,13 @@ public class MontaniasHeladas extends Ubicacion{
         this.criatura = criatura;
         this.tieneTesoro = tieneTesoro;
     }
-    x
+
     public boolean juegoGanado() {
-        // si gano el heroe gano la pelea y el mapa tiene el tesoro -> gano el juego
-        return (this.ganoElHeroe() && this.tieneTesoro);
+        return this.tieneTesoro;
     }
 
-    public void reclamarRecompensa() {
-        Recompensa recompensa = (this.ganoElHeroe())
-                ? new Recompensa("Espada de Fuego", 0.20, 0)
-                : null;
-        if (recompensa != null) {
-            this.getHeroe().guardarRecompensa(recompensa);
-        }
+    public Recompensa reclamarRecompensa() {
+        return new Recompensa("Espada de Fuego", 0.20, 0);
     }
 
     public Criatura getCriatura() {
@@ -29,6 +23,6 @@ public class MontaniasHeladas extends Ubicacion{
     }
 
     public UbicacionView toView() {
-        return new UbicacionView(this.getNombre(), this.getHeroe(), this.criatura);
+        return new UbicacionView(this.getIdUbicacion(), this.getNombre(), this.getHeroe(), this.criatura);
     }
 }

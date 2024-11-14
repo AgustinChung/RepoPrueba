@@ -11,17 +11,11 @@ public class Aldea extends Ubicacion {
     }
 
     public boolean juegoGanado() {
-        // si gano el heroe gano la pelea y el mapa tiene el tesoro -> gano el juego
-        return (this.ganoElHeroe() && this.tieneTesoro);
+        return this.tieneTesoro;
     }
 
-    public void reclamarRecompensa() {
-        Recompensa recompensa = (this.ganoElHeroe())
-                ? new Recompensa("Escudo de Titanio", 0, 0.3)
-                : null;
-        if (recompensa != null) {
-            this.getHeroe().guardarRecompensa(recompensa);
-        }
+    public Recompensa reclamarRecompensa() {
+        return new Recompensa("Escudo de Titanio", 0, 0.3);
     }
 
     public Criatura getCriatura() {
@@ -29,6 +23,6 @@ public class Aldea extends Ubicacion {
     }
 
     public UbicacionView toView() {
-        return new UbicacionView(this.getNombre(), this.getHeroe(), this.criatura);
+        return new UbicacionView(this.getIdUbicacion(), this.getNombre(), this.getHeroe(), this.criatura);
     }
 }

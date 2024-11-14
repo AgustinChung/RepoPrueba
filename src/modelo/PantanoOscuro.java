@@ -12,17 +12,11 @@ public class PantanoOscuro extends Ubicacion {
     }
 
     public boolean juegoGanado() {
-        // si gano el heroe gano la pelea y el mapa tiene el tesoro -> gano el juego
-        return (this.ganoElHeroe() && this.tieneTesoro);
+        return this.tieneTesoro;
     }
 
-    public void reclamarRecompensa() {
-        Recompensa recompensa = (this.ganoElHeroe())
-                ? new Recompensa("Arco de Luz", 0.25, 0)
-                : null;
-        if (recompensa != null) {
-            this.getHeroe().guardarRecompensa(recompensa);
-        }
+    public Recompensa reclamarRecompensa() {
+        return new Recompensa("Arco de Luz", 0.25, 0);
     }
 
     public Criatura getCriatura() {
@@ -30,7 +24,7 @@ public class PantanoOscuro extends Ubicacion {
     }
 
     public UbicacionView toView() {
-        return new UbicacionView(this.getNombre(), this.getHeroe(), this.criatura);
+        return new UbicacionView(this.getIdUbicacion(), this.getNombre(), this.getHeroe(), this.criatura);
     }
 	
 }

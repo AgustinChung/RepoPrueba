@@ -8,10 +8,7 @@ public class Juego {
 	//Declaracion de la instancia para el singleton
 	private static Juego instancia;
 	
-	//Listas 
-	private Guerrero usuarioGuerrero;
-	private Mago usuarioMago;
-	private Arquero usuarioArquero;
+	//Listas
 	private Heroe usuarioHeroe;
 	private List<Criatura> criaturas;
 	private List<Ubicacion> ubicaciones;
@@ -34,20 +31,19 @@ public class Juego {
 	//METODOS DE CREACION. Crea y agrega a la lista. Agregar excepciones
 	public Guerrero crearGuerrero(String nombre ,int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
 		Guerrero guerrero = new Guerrero(nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario);
-		this.usuarioGuerrero = guerrero;
 		this.usuarioHeroe = guerrero;
 		return guerrero;
 	};
 	
 	public Mago crearMago(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
 		Mago mago = new Mago (nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario);
-		this.usuarioMago = mago;
+		this.usuarioHeroe = mago;
 		return mago;
 	};
 	
 	public Arquero crearArquero(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario, int punteria, int agilidad) {
 		Arquero arquero = new Arquero (nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario, punteria, agilidad);
-		this.usuarioArquero = arquero;
+		this.usuarioHeroe = arquero;
 		return arquero;
 	};
 	
@@ -69,27 +65,51 @@ public class Juego {
 		return espectro;
 	};
 
-	public void crearMontaniasHeladas(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo, boolean tieneTesoro) {
+	private void crearMontaniasHeladas(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo, boolean tieneTesoro) {
 		MontaniasHeladas montaniasHeladas = new MontaniasHeladas(nombre, this.usuarioHeroe, criatura, estaActivo, tieneTesoro);
 		this.ubicaciones.add(montaniasHeladas);
 	}
 
+	private void crearUbicacionNeutral(String nombre, Heroe heroe, boolean estaActivo) {
+		UbicacionNeutral ubicacionNeutral = new UbicacionNeutral(nombre, heroe, estaActivo);
+		this.ubicaciones.add(ubicacionNeutral);
+	}
+
+	private void crearPantanoOscuro(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo, boolean tieneTesoro) {
+		PantanoOscuro pantanoOscuro = new PantanoOscuro("Pantano Oscuro", heroe, criatura, estaActivo, tieneTesoro);
+		this.ubicaciones.add(pantanoOscuro);
+	}
+
 	public void crearMapa() {
 		Dragon dragon = this.crearDragon("Dragon", 80, 1, 40, 20);
+		Espectro espectro = this.crearEspectro("Espectro", 200, 2, 45, 150);
 		this.crearMontaniasHeladas("Montanias Heladas", this.usuarioHeroe, dragon, true, false);
-		// tenemos que agregar todas las ubicaciones aca
+		this.crearUbicacionNeutral("Ubicacion Neutral", this.usuarioHeroe, true);
+		this.crearPantanoOscuro("Pantano Oscuro", this.usuarioHeroe, espectro, false, false);
 	}
 
 	public List<Ubicacion> getUbicaciones() {
 		return ubicaciones;
 	}
 
-	public Heroe getHeroe() { return this.usuarioHeroe; }
-	
-	public boolean generarPelea(String idCriatura) {
+	public Heroe getHeroe() {
+		return this.usuarioHeroe;
+	}
+
+	public boolean generarPelea(String idUbicacion, String idCriatura) {
 		Criatura criatura = this.buscarCriatura(idCriatura);
-		PeleaV2 pelea = new PeleaV2(this.usuarioHeroe, criatura);
-		return pelea.iniciarPelea();
+		PeleaV2 pelea = new PeleaV2(this.getHeroe(), criatura);
+		boolean ganoElHeroe = pelea.iniciarPelea();
+		if (ganoElHeroe) {
+			Ubicacion ubicacion = buscarUbicacion(idUbicacion);
+			if (ubicacion != null) {
+				Recompensa recompensa = ubicacion.reclamarRecompensa();
+				System.out.println("Se genero la recompensa");
+				this.usuarioHeroe.guardarRecompensa(recompensa);
+				System.out.println("Se guardo la recompensa");
+			}
+		}
+		return ganoElHeroe;
 	}
 
 	private Criatura buscarCriatura(String id) {
@@ -99,5 +119,26 @@ public class Juego {
 			}
 		}
 		return null;
+	}
+
+	private Ubicacion buscarUbicacion(String id) {
+		for (Ubicacion ubicacion : ubicaciones) {
+			if (ubicacion.idUbicacion == id) {
+				return ubicacion;
+			}
+		}
+		return null;
+	}
+
+	public boolean esUbicacionNeutral(Ubicacion ubicacion) {
+		return ubicacion != null && ubicacion.getNombre() == "Ubicacion Neutral";
+	}
+
+	public void curarHeroe(String idUbicacion) {
+		Ubicacion ubicacion = buscarUbicacion(idUbicacion);
+		if (esUbicacionNeutral(ubicacion)) {
+			UbicacionNeutral ubicacionNeutral = (UbicacionNeutral) ubicacion;
+			ubicacionNeutral.descansar(this.usuarioHeroe);
+		}
 	}
 }

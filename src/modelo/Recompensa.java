@@ -22,5 +22,9 @@ public class Recompensa {
 	public double getPorcentajeAumentoDefensa() { 
 		return this.porcentajeAumentoDefensa; 
 	}
+
+	public RecompensaView toView() {
+		return new RecompensaView(this.nombre, this.porcentajeAumentoAtaque, this.porcentajeAumentoDefensa);
+	}
 	
 }

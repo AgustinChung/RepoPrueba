@@ -57,8 +57,15 @@ public class Controlador {
 		return null;
 	}
 
-	public static boolean ganoHeroe(CriaturaView criatura) { // preguntarle al profe si esta bien arrancar la secuencia con este metodo
-		return Juego.getInstancia().generarPelea(criatura.getIdCriatura());
+	public static HeroeView pelear(UbicacionView ubicacion, CriaturaView criatura) { // preguntarle al profe si esta bien arrancar la secuencia con este metodo
+		Juego.getInstancia().generarPelea(ubicacion.getIdUbicacion(), criatura.getIdCriatura());
+		HeroeView heroe = Juego.getInstancia().getHeroe().toView();
+		return heroe;
+	}
+
+	public static HeroeView curarHeroe(UbicacionView ubicacion) {
+		Juego.getInstancia().curarHeroe(ubicacion.getIdUbicacion());
+		return Juego.getInstancia().getHeroe().toView();
 	}
 
 }
