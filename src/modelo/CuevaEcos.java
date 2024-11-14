@@ -11,9 +11,6 @@ public class CuevaEcos extends Ubicacion {
         this.criatura = criatura;
     }
 
-    public boolean ganoElHeroe() {
-        return (this.getHeroe().getPuntosVida() > 0 && this.criatura.getPuntosVida() == 0);
-    }
 
     public boolean juegoGanado() {
         // Siempre retorna falso porque no hay tesoro en esta clase
