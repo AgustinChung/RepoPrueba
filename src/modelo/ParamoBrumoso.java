@@ -20,6 +20,10 @@ public class ParamoBrumoso extends Ubicacion {
         return false;
     }
 
+    public Recompensa reclamarRecompensa() {
+        return new Recompensa("Experiencia", 0.20, 0);
+    }
+
     @Override
     public Criatura getCriatura() {
         return this.criatura;

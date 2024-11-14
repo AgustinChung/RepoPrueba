@@ -22,17 +22,11 @@ public class Bosque extends Ubicacion {
     }
 
     public boolean juegoGanado() {
-        // si gano el heroe gano la pelea y el mapa tiene el tesoro -> gano el juego
-        return (this.ganoElHeroe() && this.tieneTesoro);
+        return this.tieneTesoro;
     }
 
-    public void reclamarRecompensa() {
-        Recompensa recompensa = (this.ganoElHeroe())
-                ? new Recompensa("Amuleto perdido", 0, 0.15)
-                : null;
-        if (recompensa != null) {
-            this.getHeroe().guardarRecompensa(recompensa);
-        }
+    public Recompensa reclamarRecompensa() {
+        return new Recompensa("Amuleto perdido", 0, 0.15);
     }
 
     public Criatura getCriatura() {
@@ -40,7 +34,7 @@ public class Bosque extends Ubicacion {
     }
 
     public UbicacionView toView() {
-        return new UbicacionView(this.getNombre(), this.getHeroe(), this.criatura);
+        return new UbicacionView(this.getIdUbicacion(), this.getNombre(), this.getHeroe(), this.criatura);
     }
 
 }
