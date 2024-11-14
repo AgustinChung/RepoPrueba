@@ -12,15 +12,6 @@ public class Bosque extends Ubicacion {
         this.tieneTesoro = tieneTesoro;
     }
 
-	public void inicializarPelea() {
-        PeleaV2 pelea = new PeleaV2(this.getHeroe(), this.criatura);
-        pelea.iniciarPelea();
-    }
-
-    public boolean ganoElHeroe() {
-        return (this.getHeroe().getPuntosVida() > 0 && this.criatura.getPuntosVida() == 0);
-    }
-
     public boolean juegoGanado() {
         return this.tieneTesoro;
     }
