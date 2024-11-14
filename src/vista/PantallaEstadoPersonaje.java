@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Image;
-import java.nio.channels.NonWritableChannelException;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -17,7 +16,7 @@ public class PantallaEstadoPersonaje extends JFrame {
     private JPanel panelAtaque;
     private JPanel panelDefensa;
 
-    public PantallaEstadoPersonaje() {
+    public PantallaEstadoPersonaje(HeroeView heroe) {
         // Configuración básica de la ventana
         setTitle("Estado del Héroe");
         setSize(500, 400);
@@ -38,14 +37,14 @@ public class PantallaEstadoPersonaje extends JFrame {
         // Panel para mostrar el ataque del personaje
         panelAtaque = new JPanel();
         panelAtaque.setOpaque(false); // Hacer transparente para mostrar el fondo
-        JLabel labelAtaque = new JLabel("Puntos de ataque: ");
+        JLabel labelAtaque = new JLabel("Puntos de ataque: " + heroe.getAtaque());
         labelAtaque.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
         panelAtaque.add(labelAtaque);
 
         // Panel para mostrar la defensa del personaje
         panelDefensa = new JPanel();
         panelDefensa.setOpaque(false); // Hacer transparente para mostrar el fondo
-        JLabel labelDefensa = new JLabel("Puntos de defensa: ");
+        JLabel labelDefensa = new JLabel("Puntos de defensa: " + heroe.getDefensa());
         labelDefensa.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
         panelDefensa.add(labelDefensa);
 

@@ -40,12 +40,19 @@ public class MainMVC {
 
     // *** MAIN ***
     public static void main(String[] args) {
+
+
         /*
         PantallaInicio2 pantalla = new PantallaInicio2();
         pantalla.setVisible(true);
         PantallaEstadoPersonaje pantallaEstadoPersonaje = new PantallaEstadoPersonaje();
         pantallaEstadoPersonaje.setVisible(true);
+
         */
+        HeroeView heroe = Controlador.getHeroe();
+        PantallaEstadoPersonaje pantallaEstadoPersonaje = new PantallaEstadoPersonaje(heroe);
+        pantallaEstadoPersonaje.setVisible(true);
+
         // *** PASO 1 ***
         // 1) Seteamos el mapa e instanciamos el Juego
 
