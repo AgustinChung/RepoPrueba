@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4c28af30-1565-46f7-ac34-b515c5b6013e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/secuencia1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/secuencia2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/secuencia3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modelo/Bosque.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Bosque.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modelo/CanonCrepusculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/CanonCrepusculo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +28,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "entrega",
+    "git-widget-placeholder": "rama-nicolas",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/nicolasdamm/Desktop/Working Directory/POO_24C2_TPO_Grupo5",
     "node.js.detected.package.eslint": "true",

@@ -10,7 +10,7 @@ public class Bosque extends Ubicacion {
         this.criatura = criatura;
         this.tieneTesoro = tieneTesoro;
     }
-	
+
 	public void inicializarPelea() {
         PeleaV2 pelea = new PeleaV2(this.getHeroe(), this.criatura);
         pelea.iniciarPelea();
