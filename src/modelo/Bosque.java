@@ -16,8 +16,9 @@ public class Bosque extends Ubicacion {
         return this.tieneTesoro;
     }
 
-    public Recompensa reclamarRecompensa() {
-        return new Recompensa("Amuleto perdido", 0, 0.15);
+    public void reclamarRecompensa(Heroe heroe) {
+        Recompensa recompensa =  new Recompensa("Amuleto perdido", 0, 0.15);
+        heroe.guardarRecompensa(recompensa);
     }
 
     public Criatura getCriatura() {

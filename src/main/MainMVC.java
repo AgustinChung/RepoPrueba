@@ -91,6 +91,7 @@ public class MainMVC {
         UbicacionView ubicacionNeutral = Controlador.viajar("Ubicacion Neutral");
         mostrarUbicacion(ubicacionNeutral);
         heroe = Controlador.curarHeroe(ubicacionNeutral);
+        heroe = Controlador.reclamarRecompensaHeroe(ubicacionNeutral);
         mostrarInformacionHeroe(heroe);
     }
 }

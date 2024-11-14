@@ -14,8 +14,9 @@ public class MontaniasHeladas extends Ubicacion{
         return this.tieneTesoro;
     }
 
-    public Recompensa reclamarRecompensa() {
-        return new Recompensa("Espada de Fuego", 0.20, 0);
+    public void reclamarRecompensa(Heroe heroe) {
+        Recompensa recompensa = new Recompensa("Espada de Fuego", 0.20, 0);
+        heroe.guardarRecompensa(recompensa);
     }
 
     public Criatura getCriatura() {

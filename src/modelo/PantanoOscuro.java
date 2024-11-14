@@ -15,8 +15,9 @@ public class PantanoOscuro extends Ubicacion {
         return this.tieneTesoro;
     }
 
-    public Recompensa reclamarRecompensa() {
-        return new Recompensa("Arco de Luz", 0.25, 0);
+    public void reclamarRecompensa(Heroe heroe) {
+        Recompensa recompensa = new Recompensa("Arco de Luz", 0.25, 0);
+        heroe.guardarRecompensa(recompensa);
     }
 
     public Criatura getCriatura() {

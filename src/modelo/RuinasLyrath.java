@@ -16,8 +16,7 @@ public class RuinasLyrath extends Ubicacion {
         return false;
     }
 
-    public Recompensa reclamarRecompensa() {
-        return new Recompensa("Experiencia", 0.20, 0);
+    public void reclamarRecompensa(Heroe heroe) {
     }
 
     @Override
