@@ -136,6 +136,9 @@ public class Juego {
 	}
 
 	public void curarHeroe(String idUbicacion) {
-		if(esUbicacionNeutral(idUbicacion))
+		if(esUbicacionNeutral(idUbicacion)) {
+			int puntosVidaMaximo = this.usuarioHeroe.getPuntosVidaMaxima();
+			this.usuarioHeroe.setPuntosVida(puntosVidaMaximo);
+		}
 	}
 }
