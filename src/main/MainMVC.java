@@ -15,23 +15,27 @@ public class MainMVC {
                 + "\nPuntos de vida: " + heroe.getPuntosVida() +
                 "\nNombre de usuario: " + heroe.getNombreUsuario() + "\nLista de recompensas: ");
         for(RecompensaView recompensa : heroe.getRecompensas()) {
-            System.out.print(recompensa.getNombre() + " - ");
+            System.out.println(recompensa.getNombre() + " - ");
         }
     }
 
     public static void mostrarMapa(List<UbicacionView> ubicaciones) {
-        System.out.println("Ubicaciones:");
+        System.out.println("\nUbicaciones:");
         for (UbicacionView ubicacion : ubicaciones) {
-            System.out.println(ubicacion.getNombre());
+            if(ubicacion.getEstaActivo()) {
+                System.out.println(ubicacion.getNombre() + " esta ACTIVA.");
+            } else {
+                System.out.println(ubicacion.getNombre() + " no esta activa.");
+            }
         }
     }
 
     public static void mostrarUbicacion(UbicacionView ubicacion) {
-        System.out.println("Nombre ubicacion: " + ubicacion.getNombre() + "\n");
+        System.out.println("\nNombre ubicacion seleccionada: " + ubicacion.getNombre() + "\n");
     }
 
     public static void mostrarInformacionCriatura(CriaturaView criatura) {
-        System.out.println("Nombre critura: " + criatura.getNombre() +
+        System.out.println("\nCritura en la ubicacion seleccionada: " + criatura.getNombre() +
                 "\nPuntos de vida: " + criatura.getPuntosVida() +
                 "\nNivel: " + criatura.getNivel() +
                 "\nNivel de ataque: " + criatura.getNivelAtaque() +
@@ -71,8 +75,8 @@ public class MainMVC {
         // 3) El usuario ve la informacion de la critatura y decide si atacar o no
 
         mostrarMapa((Controlador.mostrarMapa()));
-        UbicacionView montaniasHeladas = Controlador.viajar("Montanias Heladas");
-        mostrarUbicacion(montaniasHeladas);
+        UbicacionView ubicacion = Controlador.viajar("Montanias Heladas");
+        mostrarUbicacion(ubicacion);
         CriaturaView criatura = Controlador.viajar("Montanias Heladas").getCriatura();
         mostrarInformacionCriatura(criatura);
 
@@ -81,7 +85,7 @@ public class MainMVC {
         // 2) Comienza la pelea
         // 3) Se muestra quien gano y quien perdio
 
-        HeroeView heroe = Controlador.pelear(montaniasHeladas, criatura);
+        HeroeView heroe = Controlador.pelear(ubicacion, criatura);
         String resultado = (heroe.getPuntosVida() > 0)
                 ? "GANO HEROE"
                 : "PERDIO EL HEROE";
@@ -95,10 +99,28 @@ public class MainMVC {
         // 4) El heroe reclama su recompensa ganada
 
         mostrarMapa((Controlador.mostrarMapa()));
-        UbicacionView ubicacionNeutral = Controlador.viajar("Ubicacion Neutral");
-        mostrarUbicacion(ubicacionNeutral);
-        heroe = Controlador.curarHeroe(ubicacionNeutral);
-        heroe = Controlador.reclamarRecompensaHeroe(ubicacionNeutral);
+        ubicacion = Controlador.viajar("Ubicacion Neutral");
+        mostrarUbicacion(ubicacion);
+        Controlador.curarHeroe(ubicacion);
+        System.out.println("El heroe se esta curando.");
+        System.out.println("El heroe reclamo su recompensa.");
+        heroe = Controlador.reclamarRecompensaHeroe(ubicacion);
         mostrarInformacionHeroe(heroe);
+
+        // *** PASO 6 ***
+        // 1) El heroe viaja a la siguiente ubicacion disponible
+        // 2) El heroe selecciona atacar
+        ubicacion = Controlador.viajar("Paramo Brumoso");
+        mostrarUbicacion(ubicacion);
+        criatura = Controlador.viajar("Paramo Brumoso").getCriatura();
+        mostrarInformacionCriatura(criatura);
+
+        heroe = Controlador.pelear(ubicacion, criatura);
+        resultado = (heroe.getPuntosVida() > 0)
+                ? "GANO HEROE"
+                : "PERDIO EL HEROE";
+        System.out.println(resultado);
+        mostrarInformacionHeroe(Controlador.getHeroe());
+        mostrarMapa((Controlador.mostrarMapa()));
     }
 }

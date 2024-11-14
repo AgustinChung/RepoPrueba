@@ -1,13 +1,17 @@
 package modelo;
 
+import java.util.List;
+
 public class MontaniasHeladas extends Ubicacion{
     private Criatura criatura;
     private boolean tieneTesoro;
+    private List<Ubicacion> nombresUbiDesbloquea;
 
-    public MontaniasHeladas(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo, boolean tieneTesoro) {
+    public MontaniasHeladas(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo, boolean tieneTesoro, List<Ubicacion> nombresUbiDesbloquea) {
         super(nombre, heroe, estaActivo);
         this.criatura = criatura;
         this.tieneTesoro = tieneTesoro;
+        this.nombresUbiDesbloquea = nombresUbiDesbloquea;
     }
 
     public boolean juegoGanado() {
@@ -23,7 +27,14 @@ public class MontaniasHeladas extends Ubicacion{
         return this.criatura;
     }
 
+    public void activarSiguientesUbicaciones() {
+        this.desactivarMapa();
+        for (Ubicacion ubicacion : this.nombresUbiDesbloquea) {
+            ubicacion.activarMapa();
+        }
+    }
+
     public UbicacionView toView() {
-        return new UbicacionView(this.getIdUbicacion(), this.getNombre(), this.getHeroe(), this.criatura);
+        return new UbicacionView(this.getIdUbicacion(), this.getNombre(), this.getHeroe(), this.criatura, this.getEstaActivo());
     }
 }

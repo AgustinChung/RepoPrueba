@@ -22,6 +22,11 @@ public class PeleaV2 {
                 turnoHeroe = true;
             }
         }
+        // Termino la pelea
+        if (this.esUnGuerrero()) { // si es un guerrero reseteo los golpes
+            Guerrero guerrero = (Guerrero) heroe;
+            guerrero.resetContadorGolpes();
+        }
         return (this.heroe.getPuntosVida() > 0);
     }
 
@@ -53,5 +58,9 @@ public class PeleaV2 {
                     : this.heroe.getPuntosVida() - danio;
             this.heroe.setPuntosVida(puntosVida);
         }
+    }
+
+    public boolean esUnGuerrero() {
+        return heroe.getNombre() == "Guerrero";
     }
 }

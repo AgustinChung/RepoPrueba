@@ -28,16 +28,22 @@ public class UbicacionNeutral extends Ubicacion{
 			if (recompensa.getPorcentajeAumentoDefensa() != 0) {
 				int nuevoNivelDefensa = (int) (heroe.getNivelDeDefensaMaximo() + heroe.getNivelDeDefensaMaximo() * recompensa.getPorcentajeAumentoDefensa());
 				heroe.setNivelDefensa(nuevoNivelDefensa);
-				heroe.setNivelDeDefensaMaximo(nuevoNivelDefensa);
+				heroe.setnivelDefensaMaximo(nuevoNivelDefensa);
 			}
 		}
+		heroe.borrarRecompensas();
 	}
 
 	public Criatura getCriatura() {
 		return null;
 	}
 
+	public void activarSiguientesUbicaciones() {}
+	public boolean juegoGanado() {
+		return false;
+	}
+
 	public UbicacionView toView() {
-		return new UbicacionView(this.getIdUbicacion(), this.getNombre(), this.getHeroe(), null);
+		return new UbicacionView(this.getIdUbicacion(), this.getNombre(), this.getHeroe(), null, this.getEstaActivo());
 	}
 }
