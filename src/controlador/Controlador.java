@@ -64,10 +64,7 @@ public class Controlador {
 	}
 
 	public static HeroeView curarHeroe(UbicacionView ubicacion) {
-		// el juego no deberia tener toda la logica de negocio, pero si el controlador no se comunica con otro que no sea
-		// el juego, como hago para iniciar situaciones del juego si que pasen siempre primero por el juego???
 		Juego.getInstancia().curarHeroe(ubicacion.getIdUbicacion());
-
 		return Juego.getInstancia().getHeroe().toView();
 	}
 
