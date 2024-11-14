@@ -3,6 +3,7 @@
 package modelo;
 
 public class ParamoBrumoso extends Ubicacion {
+
     private Criatura criatura;
 
     public ParamoBrumoso(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo) {

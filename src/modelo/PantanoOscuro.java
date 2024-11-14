@@ -2,9 +2,9 @@ package modelo;
 
 public class PantanoOscuro extends Ubicacion {
 
-	private Criatura criatura;
     private boolean tieneTesoro;
-	
+    private Criatura criatura;
+
 	public PantanoOscuro(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo, boolean tieneTesoro) {
         super(nombre, heroe, estaActivo);
         this.criatura = criatura;

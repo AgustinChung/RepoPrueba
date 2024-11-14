@@ -6,8 +6,8 @@ public class Aldea extends Ubicacion {
 
     public Aldea(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo, boolean tieneTesoro) {
         super(nombre, heroe, estaActivo);
-        this.criatura = criatura;
         this.tieneTesoro = tieneTesoro;
+        this.criatura = criatura;
     }
 
     public void inicializarPelea() {

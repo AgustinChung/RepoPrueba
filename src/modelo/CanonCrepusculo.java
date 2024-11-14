@@ -5,6 +5,7 @@ package modelo;
 public class CanonCrepusculo extends Ubicacion {
     private Criatura criatura;
 
+
     public CanonCrepusculo(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo) {
         super(nombre, heroe, estaActivo);
         this.criatura = criatura;
