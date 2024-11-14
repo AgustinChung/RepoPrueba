@@ -17,19 +17,20 @@ public class UbicacionNeutral extends Ubicacion{
 
 	//agarra los datos de la recompensa y setea nuevos valores en el ataque y defensa del heroe.
 	//VER SI RECIBE UNA SOLA RECOMPENSA O UNA LISTA DE RECOMPENSAS.
-	public Recompensa reclamarRecompensa() {
-		List<Recompensa> recompensas = this.getHeroe().getRecompensas();
+	@Override
+	public void reclamarRecompensa(Heroe heroe) {
+		List<Recompensa> recompensas = heroe.getRecompensas();
 		for (Recompensa recompensa : recompensas) {
 			if (recompensa.getPorcentajeAumentoAtaque() != 0) {
-				double nuevoNivelAtaque = this.getHeroe().getNivelAtaque() + this.getHeroe().getNivelAtaque() * recompensa.getPorcentajeAumentoAtaque();
-				this.getHeroe().setNivelAtaque((int) nuevoNivelAtaque);
+				double nuevoNivelAtaque = heroe.getNivelAtaque() + heroe.getNivelAtaque() * recompensa.getPorcentajeAumentoAtaque();
+				heroe.setNivelAtaque((int) nuevoNivelAtaque);
 			}
 			if (recompensa.getPorcentajeAumentoDefensa() != 0) {
-				double nuevoNivelDefensa = this.getHeroe().getNivelDeDefensaMaximo() + this.getHeroe().getNivelDeDefensaMaximo() * recompensa.getPorcentajeAumentoDefensa();
-				this.getHeroe().setNivelDefensa((int) nuevoNivelDefensa);
+				int nuevoNivelDefensa = (int) (heroe.getNivelDeDefensaMaximo() + heroe.getNivelDeDefensaMaximo() * recompensa.getPorcentajeAumentoDefensa());
+				heroe.setNivelDefensa(nuevoNivelDefensa);
+				heroe.setNivelDeDefensaMaximo(nuevoNivelDefensa);
 			}
 		}
-		return null;
 	}
 
 	public Criatura getCriatura() {

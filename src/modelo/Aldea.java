@@ -14,8 +14,9 @@ public class Aldea extends Ubicacion {
         return this.tieneTesoro;
     }
 
-    public Recompensa reclamarRecompensa() {
-        return new Recompensa("Escudo de Titanio", 0, 0.3);
+    public void reclamarRecompensa(Heroe heroe) {
+        Recompensa recompensa = new Recompensa("Escudo de Titanio", 0, 0.3);
+        heroe.guardarRecompensa(recompensa);
     }
 
     public Criatura getCriatura() {

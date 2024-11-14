@@ -52,11 +52,12 @@ public abstract class Heroe {
 
 
 	public int getNivelDefensa() {
-		return nivelDefensa;
+		return this.nivelDefensa;
 	}
 	public void setNivelDefensa(int nivelDefensa) {
 		this.nivelDefensa = nivelDefensa;
 	}
+	public void setNivelDeDefensaMaximo(int nivelDefensa) { this.nivelDefensaMaximo = nivelDefensa; }
 
 
 	public int getNivel() {
@@ -91,11 +92,6 @@ public abstract class Heroe {
 		return this.puntosVidaMaxima;
 	}
 	public int getNivelDeDefensaMaximo() { return this.nivelDeDefensaMaximo; }
-
-
-	public void setPuntosVidaMaxima(int puntosVidaMaxima) {
-		this.puntosVidaMaxima = puntosVidaMaxima;
-	}
 
 	public HeroeView toView() {
 		List<RecompensaView> recompensasViews = new ArrayList<>();

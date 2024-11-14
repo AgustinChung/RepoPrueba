@@ -17,7 +17,7 @@ public abstract class Ubicacion {
 		this.estaActivo = estaActivo;
 	}
 
-	public abstract Recompensa reclamarRecompensa();
+	public abstract void reclamarRecompensa(Heroe heroe);
 
 	protected String getIdUbicacion() { return this.idUbicacion; }
 	protected String getNombre() {

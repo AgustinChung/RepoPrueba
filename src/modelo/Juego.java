@@ -103,10 +103,7 @@ public class Juego {
 		if (ganoElHeroe) {
 			Ubicacion ubicacion = buscarUbicacion(idUbicacion);
 			if (ubicacion != null) {
-				Recompensa recompensa = ubicacion.reclamarRecompensa();
-				System.out.println("Se genero la recompensa");
-				this.usuarioHeroe.guardarRecompensa(recompensa);
-				System.out.println("Se guardo la recompensa");
+				ubicacion.reclamarRecompensa(this.usuarioHeroe);
 			}
 		}
 		return ganoElHeroe;
@@ -139,6 +136,14 @@ public class Juego {
 		if (esUbicacionNeutral(ubicacion)) {
 			UbicacionNeutral ubicacionNeutral = (UbicacionNeutral) ubicacion;
 			ubicacionNeutral.descansar(this.usuarioHeroe);
+		}
+	}
+
+	public void reclamarRecompensas(String idUbicacion) {
+		Ubicacion ubicacion = buscarUbicacion(idUbicacion);
+		if (esUbicacionNeutral(ubicacion)) {
+			UbicacionNeutral ubicacionNeutral = (UbicacionNeutral) ubicacion;
+			ubicacionNeutral.reclamarRecompensa(this.usuarioHeroe);
 		}
 	}
 }

@@ -16,8 +16,9 @@ public class CanonCrepusculo extends Ubicacion {
         return false;
     }
 
-    public Recompensa reclamarRecompensa() {
-        return new Recompensa("Experiencia", 0.20, 0);
+    @Override
+    public void reclamarRecompensa(Heroe heroe) {
+
     }
 
     @Override

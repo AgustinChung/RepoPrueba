@@ -68,4 +68,9 @@ public class Controlador {
 		return Juego.getInstancia().getHeroe().toView();
 	}
 
+	public static HeroeView reclamarRecompensaHeroe(UbicacionView ubicacion) {
+		Juego.getInstancia().reclamarRecompensas(ubicacion.getIdUbicacion());
+		return Juego.getInstancia().getHeroe().toView();
+	}
+
 }
