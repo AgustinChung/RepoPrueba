@@ -27,6 +27,6 @@ public class ParamoBrumoso extends Ubicacion {
 
     @Override
     public UbicacionView toView() {
-        return new UbicacionView(this.getNombre(), this.getHeroe(), this.criatura);
+        return new UbicacionView(this.getIdUbicacion(), this.getNombre(), this.getHeroe(), this.criatura);
     }
 }
