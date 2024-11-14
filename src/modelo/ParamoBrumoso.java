@@ -2,13 +2,17 @@
 
 package modelo;
 
+import java.util.List;
+
 public class ParamoBrumoso extends Ubicacion {
 
     private Criatura criatura;
+    private List<Ubicacion> nombresUbiDesbloquea;
 
-    public ParamoBrumoso(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo) {
+    public ParamoBrumoso(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo, List<Ubicacion> nombresUbiDesbloquea) {
         super(nombre, heroe, estaActivo);
         this.criatura = criatura;
+        this.nombresUbiDesbloquea = nombresUbiDesbloquea;
     }
 
     public boolean juegoGanado() {
@@ -24,8 +28,15 @@ public class ParamoBrumoso extends Ubicacion {
         return this.criatura;
     }
 
+    public void activarSiguientesUbicaciones() {
+        this.desactivarMapa();
+        for (Ubicacion ubicacion : this.nombresUbiDesbloquea) {
+            ubicacion.activarMapa();
+        }
+    }
+
     @Override
     public UbicacionView toView() {
-        return new UbicacionView(this.getIdUbicacion(), this.getNombre(), this.getHeroe(), this.criatura);
+        return new UbicacionView(this.getIdUbicacion(), this.getNombre(), this.getHeroe(), this.criatura, this.getEstaActivo());
     }
 }

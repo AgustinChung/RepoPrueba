@@ -2,6 +2,8 @@
 
 package modelo;
 
+import java.util.List;
+
 public class RuinasLyrath extends Ubicacion {
 
     private Criatura criatura;
@@ -24,8 +26,10 @@ public class RuinasLyrath extends Ubicacion {
         return this.criatura;
     }
 
+    public void activarSiguientesUbicaciones() {}
+
     @Override
     public UbicacionView toView() {
-        return new UbicacionView(this.getIdUbicacion(), this.getNombre(), this.getHeroe(), this.criatura);
+        return new UbicacionView(this.getIdUbicacion(), this.getNombre(), this.getHeroe(), this.criatura, this.getEstaActivo());
     }
 }

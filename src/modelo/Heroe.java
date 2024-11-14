@@ -8,7 +8,6 @@ public abstract class Heroe {
 	protected String nombreUsuario;
     protected int puntosVida;
     private int puntosVidaMaxima; // Para restaurar al máximo
-	private int nivelDeDefensaMaximo; // Para restaurar al maximo
     protected int nivelAtaque;
     protected int nivelDefensa;
 	protected int nivelDefensaMaximo;
@@ -57,7 +56,7 @@ public abstract class Heroe {
 	public void setNivelDefensa(int nivelDefensa) {
 		this.nivelDefensa = nivelDefensa;
 	}
-	public void setNivelDeDefensaMaximo(int nivelDefensa) { this.nivelDefensaMaximo = nivelDefensa; }
+	public void setnivelDefensaMaximo(int nivelDefensa) { this.nivelDefensaMaximo = nivelDefensa; }
 
 
 	public int getNivel() {
@@ -91,7 +90,7 @@ public abstract class Heroe {
 	public int getPuntosVidaMaxima() {
 		return this.puntosVidaMaxima;
 	}
-	public int getNivelDeDefensaMaximo() { return this.nivelDeDefensaMaximo; }
+	public int getNivelDeDefensaMaximo() { return this.nivelDefensaMaximo; }
 
 	public HeroeView toView() {
 		List<RecompensaView> recompensasViews = new ArrayList<>();
@@ -99,6 +98,10 @@ public abstract class Heroe {
 			recompensasViews.add(recompensa.toView());
 		}
 		return new HeroeView(this.nombre, this.puntosVida, this.nivelAtaque, this.nivelDefensa, this.nombreUsuario, recompensasViews);
+	}
+
+	public void borrarRecompensas() {
+		this.recompensas.clear();
 	}
 }
 

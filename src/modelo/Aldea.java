@@ -23,7 +23,9 @@ public class Aldea extends Ubicacion {
         return this.criatura;
     }
 
+    public void activarSiguientesUbicaciones() {}
+
     public UbicacionView toView() {
-        return new UbicacionView(this.getIdUbicacion(), this.getNombre(), this.getHeroe(), this.criatura);
+        return new UbicacionView(this.getIdUbicacion(), this.getNombre(), this.getHeroe(), this.criatura, this.getEstaActivo());
     }
 }

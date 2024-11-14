@@ -22,5 +22,9 @@ public class Guerrero extends Heroe {
         }
         return this.nivelAtaque;
     }
+
+    public void resetContadorGolpes() {
+        this.contadorGolpes = 0;
+    }
 }
 

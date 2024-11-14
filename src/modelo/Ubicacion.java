@@ -18,6 +18,8 @@ public abstract class Ubicacion {
 	}
 
 	public abstract void reclamarRecompensa(Heroe heroe);
+	public abstract void activarSiguientesUbicaciones();
+	public abstract boolean juegoGanado();
 
 	protected String getIdUbicacion() { return this.idUbicacion; }
 	protected String getNombre() {
@@ -36,4 +38,12 @@ public abstract class Ubicacion {
 	protected Heroe getHeroe() { return this.heroe; }
 
 	public abstract UbicacionView toView();
+
+	protected void activarMapa() {
+		this.estaActivo = true;
+	}
+
+	protected void desactivarMapa() {
+		this.estaActivo = false;
+	}
 }
