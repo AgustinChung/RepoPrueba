@@ -130,15 +130,15 @@ public class Juego {
 		return null;
 	}
 
-	public boolean esUbicacionNeutral(String idUbicacion) {
-		Ubicacion ubicacion = buscarUbicacion(idUbicacion);
+	public boolean esUbicacionNeutral(Ubicacion ubicacion) {
 		return ubicacion != null && ubicacion.getNombre() == "Ubicacion Neutral";
 	}
 
 	public void curarHeroe(String idUbicacion) {
-		if(esUbicacionNeutral(idUbicacion)) {
-			int puntosVidaMaximo = this.usuarioHeroe.getPuntosVidaMaxima();
-			this.usuarioHeroe.setPuntosVida(puntosVidaMaximo);
+		Ubicacion ubicacion = buscarUbicacion(idUbicacion);
+		if (esUbicacionNeutral(ubicacion)) {
+			UbicacionNeutral ubicacionNeutral = (UbicacionNeutral) ubicacion;
+			ubicacionNeutral.descansar(this.usuarioHeroe);
 		}
 	}
 }
