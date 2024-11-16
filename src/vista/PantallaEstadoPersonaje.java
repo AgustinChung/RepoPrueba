@@ -1,19 +1,15 @@
 package vista;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.GridLayout;
-import java.awt.Image;
-
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 import modelo.HeroeView;
 
+
 public class PantallaEstadoPersonaje extends JFrame {
+
+    private JButton botonVerMapa;
 
     public PantallaEstadoPersonaje(HeroeView heroe) {
         // Configuración básica de la ventana
@@ -62,7 +58,28 @@ public class PantallaEstadoPersonaje extends JFrame {
         // Centrar el panel en el fondo
         background.add(panelDatos, BorderLayout.CENTER);
 
+        // Crear el botón y su panel
+        botonVerMapa = new JButton("VER MAPA");
+        JPanel panelBoton = new JPanel();
+        panelBoton.setOpaque(false);
+        panelBoton.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        panelBoton.add(botonVerMapa);
+
+        // Agregar el panel del botón al fondo
+        background.add(panelBoton, BorderLayout.SOUTH);
+
         // Añadir el contenedor al JFrame
         this.add(customContainer);
+
+        botonVerMapa.addActionListener(new HandlerBotonVerMapa());
+    }
+
+    class HandlerBotonVerMapa implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            PantallaUbicaciones pantallaUbi = new PantallaUbicaciones();
+            pantallaUbi.setVisible(true);
+            dispose();
+        }
     }
 }
