@@ -8,7 +8,7 @@ import vista.PantallaUbicaciones;
 
 import java.util.List;
 
-public class Main {
+public class MainMVC {
 
     public static void mostrarInformacionHeroe(HeroeView heroe) {
         System.out.println("\nMostrando la informacion del guerrero.");
@@ -47,14 +47,14 @@ public class Main {
     public static void main(String[] args) {
 
 
-        
-        //PantallaInicio2 pantalla = new PantallaInicio2();
-        //pantalla.setVisible(true);
-    	
-    	
-    	PantallaUbicaciones pantalla = new PantallaUbicaciones();
+
+        PantallaInicio2 pantalla = new PantallaInicio2();
         pantalla.setVisible(true);
-    	
+
+
+    	//PantallaUbicaciones pantalla = new PantallaUbicaciones();
+        //pantalla.setVisible(true);
+
 
         // * PASO 1 *
         // 1) Seteamos el mapa e instanciamos el Juego
