@@ -17,6 +17,7 @@ public class Aldea extends Ubicacion {
     public void reclamarRecompensa(Heroe heroe) {
         Recompensa recompensa = new Recompensa("Escudo de Titanio", 0, 0.3);
         heroe.guardarRecompensa(recompensa);
+        heroe.aumentarExperienciaAcumulada(this.criatura.getNivel());
     }
 
     public Criatura getCriatura() {

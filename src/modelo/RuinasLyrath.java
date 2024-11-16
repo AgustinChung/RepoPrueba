@@ -19,6 +19,7 @@ public class RuinasLyrath extends Ubicacion {
     }
 
     public void reclamarRecompensa(Heroe heroe) {
+        heroe.aumentarExperienciaAcumulada(this.criatura.getNivel());
     }
 
     @Override

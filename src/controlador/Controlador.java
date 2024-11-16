@@ -11,7 +11,6 @@ import java.util.Objects;
 //adentro tiene metodos para la creacion 
 public class Controlador {
 
-	
 	public static void crearGuerrero(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
 		Juego.getInstancia().crearGuerrero(nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario );
 	}
@@ -44,8 +43,6 @@ public class Controlador {
 		return ubicacionesView;
 	}
 
-	// el usuario apreta el boton de la ubicacion a donde quiere viajar. El view, llama a controlador.viajar(nombreUbicacion), el controlador devuelve
-	// la ubicacion a la que el usuario quiso acceder.
 	public static UbicacionView viajar(String nombreUbicacion) {
 		// esto tiene que estar hecho con object View ubicacion view
 		List<Ubicacion> ubicaciones = Juego.getInstancia().getUbicaciones();

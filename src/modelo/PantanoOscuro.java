@@ -22,6 +22,7 @@ public class PantanoOscuro extends Ubicacion {
     public void reclamarRecompensa(Heroe heroe) {
         Recompensa recompensa = new Recompensa("Arco de Luz", 0.25, 0);
         heroe.guardarRecompensa(recompensa);
+        heroe.aumentarExperienciaAcumulada(this.criatura.getNivel());
     }
 
     public Criatura getCriatura() {

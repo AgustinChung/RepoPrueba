@@ -22,11 +22,11 @@ public abstract class Criatura {
 		this.nivelDefensa = nivelDefensa;
 	}
 	public String getIdCriatura() {
-		return idCriatura;
+		return this.idCriatura;
 	}
 	
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
 	
 	public int getPuntosVida() {
@@ -34,7 +34,7 @@ public abstract class Criatura {
 	}
 	
 	public int getNivel() {
-		return nivel;
+		return this.nivel;
 	}
 	
 
