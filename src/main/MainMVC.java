@@ -4,10 +4,11 @@ import controlador.Controlador;
 import modelo.*;
 import vista.PantallaEstadoPersonaje;
 import vista.PantallaInicio2;
+import vista.PantallaUbicaciones;
 
 import java.util.List;
 
-public class MainMVC {
+public class Main {
 
     public static void mostrarInformacionHeroe(HeroeView heroe) {
         System.out.println("\nMostrando la informacion del guerrero.");
@@ -42,34 +43,30 @@ public class MainMVC {
                 "\nNivel de defensa: " + criatura.getNivelDefensa()+ "\n");
     }
 
-    // *** MAIN ***
+    // * MAIN *
     public static void main(String[] args) {
 
 
-        /*
-        PantallaInicio2 pantalla = new PantallaInicio2();
+        
+        //PantallaInicio2 pantalla = new PantallaInicio2();
+        //pantalla.setVisible(true);
+    	
+    	
+    	PantallaUbicaciones pantalla = new PantallaUbicaciones();
         pantalla.setVisible(true);
-        PantallaEstadoPersonaje pantallaEstadoPersonaje = new PantallaEstadoPersonaje();
-        pantallaEstadoPersonaje.setVisible(true);
+    	
 
-        */
-        HeroeView heroe = Controlador.getHeroe();
-        PantallaEstadoPersonaje pantallaEstadoPersonaje = new PantallaEstadoPersonaje(heroe);
-        pantallaEstadoPersonaje.setVisible(true);
-
-        // *** PASO 1 ***
+        // * PASO 1 *
         // 1) Seteamos el mapa e instanciamos el Juego
 
         Juego.getInstancia().crearMapa();
 
-        // *** PASO 2 ***
+        // * PASO 2 *
         // 1) El usuario ingresa el nombre de usuario
         // 2) El usuario selecciona el personaje que quiere usar
 
-        Controlador.crearGuerrero("Guerrero", 100, 50, 30, "manuel123");
-        mostrarInformacionHeroe(Controlador.getHeroe());
 
-        // *** PASO 3 ***
+        // * PASO 3 *
         // 1) El usuario preciona el botón mostrar mapa
         // 2) El usuario selecciona una ubicación disponible
         // 3) El usuario ve la informacion de la critatura y decide si atacar o no
@@ -80,19 +77,19 @@ public class MainMVC {
         CriaturaView criatura = Controlador.viajar("Montanias Heladas").getCriatura();
         mostrarInformacionCriatura(criatura);
 
-        // *** PASO 4 ***
+        // * PASO 4 *
         // 1) El usuario decide atacar
         // 2) Comienza la pelea
         // 3) Se muestra quien gano y quien perdio
 
-        HeroeView heroe = Controlador.pelear(ubicacion, criatura);
-        String resultado = (heroe.getPuntosVida() > 0)
+        HeroeView heroe1 = Controlador.pelear(ubicacion, criatura);
+        String resultado = (heroe1.getPuntosVida() > 0)
                 ? "GANO HEROE"
                 : "PERDIO EL HEROE";
         System.out.println(resultado);
         mostrarInformacionHeroe(Controlador.getHeroe());
 
-        // *** PASO 5 ***
+        // * PASO 5 *
         // 1) El heroe pide ver el mapa
         // 2) El heroe decide viajar a una ubicacion neutral
         // 3) El heroe recupera su vida
@@ -104,10 +101,10 @@ public class MainMVC {
         Controlador.curarHeroe(ubicacion);
         System.out.println("El heroe se esta curando.");
         System.out.println("El heroe reclamo su recompensa.");
-        heroe = Controlador.reclamarRecompensaHeroe(ubicacion);
-        mostrarInformacionHeroe(heroe);
+        heroe1 = Controlador.reclamarRecompensaHeroe(ubicacion);
+        mostrarInformacionHeroe(heroe1);
 
-        // *** PASO 6 ***
+        // * PASO 6 *
         // 1) El heroe viaja a la siguiente ubicacion disponible
         // 2) El heroe selecciona atacar
         ubicacion = Controlador.viajar("Paramo Brumoso");
@@ -115,8 +112,8 @@ public class MainMVC {
         criatura = Controlador.viajar("Paramo Brumoso").getCriatura();
         mostrarInformacionCriatura(criatura);
 
-        heroe = Controlador.pelear(ubicacion, criatura);
-        resultado = (heroe.getPuntosVida() > 0)
+        heroe1 = Controlador.pelear(ubicacion, criatura);
+        resultado = (heroe1.getPuntosVida() > 0)
                 ? "GANO HEROE"
                 : "PERDIO EL HEROE";
         System.out.println(resultado);

@@ -1,6 +1,7 @@
 package controlador;
 
 import modelo.*;
+import vista.PantallaEstadoPersonaje;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,14 +12,18 @@ import java.util.Objects;
 //adentro tiene metodos para la creacion 
 public class Controlador {
 
+	
 	public static void crearGuerrero(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
 		Juego.getInstancia().crearGuerrero(nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario );
+		Controlador.MostrarDatos();
 	}
 	public static void crearMago(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
 		Juego.getInstancia().crearMago(nombre, puntosVida,nivelAtaque,nivelDefensa, nombreUsuario);
+		Controlador.MostrarDatos();
 	}
 	public static void crearArquero(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario, int punteria, int agilidad) {
 		Juego.getInstancia().crearArquero(nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario, punteria, agilidad);
+		Controlador.MostrarDatos();
 	}
 	public static void crearDragon(String nombre, int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {
 		Juego.getInstancia().crearDragon(nombre, puntosVida, nivel, nivelAtaque, nivelDefensa );
@@ -41,8 +46,11 @@ public class Controlador {
 			ubicacionesView.add(ubicacion.toView());
 		}
 		return ubicacionesView;
+		
 	}
 
+	// el usuario apreta el boton de la ubicacion a donde quiere viajar. El view, llama a controlador.viajar(nombreUbicacion), el controlador devuelve
+	// la ubicacion a la que el usuario quiso acceder.
 	public static UbicacionView viajar(String nombreUbicacion) {
 		// esto tiene que estar hecho con object View ubicacion view
 		List<Ubicacion> ubicaciones = Juego.getInstancia().getUbicaciones();
@@ -69,5 +77,10 @@ public class Controlador {
 		Juego.getInstancia().reclamarRecompensas(ubicacion.getIdUbicacion());
 		return Juego.getInstancia().getHeroe().toView();
 	}
-
+	
+	 public static void MostrarDatos() {
+			HeroeView heroe = Controlador.getHeroe();
+	        PantallaEstadoPersonaje pantallaEstadoPersonaje = new PantallaEstadoPersonaje(heroe);
+	        pantallaEstadoPersonaje.setVisible(true);
+	    }
 }
