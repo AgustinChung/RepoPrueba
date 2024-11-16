@@ -3,18 +3,17 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.GridLayout;
 import java.awt.Image;
 
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class PantallaEstadoPersonaje extends JFrame {
+import modelo.HeroeView;
 
-    private JPanel panelAtaque;
-    private JPanel panelDefensa;
+public class PantallaEstadoPersonaje extends JFrame {
 
     public PantallaEstadoPersonaje(HeroeView heroe) {
         // Configuración básica de la ventana
@@ -31,26 +30,37 @@ public class PantallaEstadoPersonaje extends JFrame {
         ImageIcon backgroundImageIcon = new ImageIcon("../fondo1.jpg");
         Image backgroundImage = backgroundImageIcon.getImage().getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
         JLabel background = new JLabel(new ImageIcon(backgroundImage));
-        background.setLayout(new BoxLayout(background, BoxLayout.Y_AXIS)); // Organizar componentes en una columna
+        background.setLayout(new BorderLayout());
         customContainer.add(background);
 
-        // Panel para mostrar el ataque del personaje
-        panelAtaque = new JPanel();
-        panelAtaque.setOpaque(false); // Hacer transparente para mostrar el fondo
-        JLabel labelAtaque = new JLabel("Puntos de ataque: " + heroe.getAtaque());
-        labelAtaque.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
-        panelAtaque.add(labelAtaque);
+        // Crear un panel para los datos del héroe
+        JPanel panelDatos = new JPanel();
+        panelDatos.setOpaque(false); // Hacer transparente para mostrar el fondo
+        panelDatos.setLayout(new GridLayout(5, 1)); // 5 filas, 1 columna
 
-        // Panel para mostrar la defensa del personaje
-        panelDefensa = new JPanel();
-        panelDefensa.setOpaque(false); // Hacer transparente para mostrar el fondo
-        JLabel labelDefensa = new JLabel("Puntos de defensa: " + heroe.getDefensa());
-        labelDefensa.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
-        panelDefensa.add(labelDefensa);
+        // Añadir los datos del héroe al panel
+        JLabel labelNombre = new JLabel("Heroe elegido: " + heroe.getNombre(), JLabel.CENTER);
+        JLabel labelUsuario = new JLabel("Nombre de usuario: " + heroe.getNombreUsuario(), JLabel.CENTER);
+        JLabel labelVida = new JLabel("Puntos de vida: " + heroe.getPuntosVida(), JLabel.CENTER);
+        JLabel labelAtaque = new JLabel("Nivel de ataque: " + heroe.getNivelAtaque(), JLabel.CENTER);
+        JLabel labelDefensa = new JLabel("Nivel de defensa: " + heroe.getNivelDefensa(), JLabel.CENTER);
 
-        // Añadir los paneles de ataque y defensa al fondo
-        background.add(panelAtaque);
-        background.add(panelDefensa);
+        // Configurar texto en negro
+        labelNombre.setForeground(Color.BLACK);
+        labelUsuario.setForeground(Color.BLACK);
+        labelVida.setForeground(Color.BLACK);
+        labelAtaque.setForeground(Color.BLACK);
+        labelDefensa.setForeground(Color.BLACK);
+
+        // Agregar las etiquetas al panel
+        panelDatos.add(labelNombre);
+        panelDatos.add(labelUsuario);
+        panelDatos.add(labelVida);
+        panelDatos.add(labelAtaque);
+        panelDatos.add(labelDefensa);
+
+        // Centrar el panel en el fondo
+        background.add(panelDatos, BorderLayout.CENTER);
 
         // Añadir el contenedor al JFrame
         this.add(customContainer);
