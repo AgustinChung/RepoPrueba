@@ -19,6 +19,7 @@ public class UbicacionNeutral extends Ubicacion{
 	//VER SI RECIBE UNA SOLA RECOMPENSA O UNA LISTA DE RECOMPENSAS.
 	@Override
 	public void reclamarRecompensa(Heroe heroe) {
+		// Aplicamos mejoras por recompensa
 		List<Recompensa> recompensas = heroe.getRecompensas();
 		for (Recompensa recompensa : recompensas) {
 			if (recompensa.getPorcentajeAumentoAtaque() != 0) {
@@ -27,11 +28,12 @@ public class UbicacionNeutral extends Ubicacion{
 			}
 			if (recompensa.getPorcentajeAumentoDefensa() != 0) {
 				int nuevoNivelDefensa = (int) (heroe.getNivelDeDefensaMaximo() + heroe.getNivelDeDefensaMaximo() * recompensa.getPorcentajeAumentoDefensa());
-				heroe.setNivelDefensa(nuevoNivelDefensa);
 				heroe.setnivelDefensaMaximo(nuevoNivelDefensa);
 			}
 		}
 		heroe.borrarRecompensas();
+		// Aplicamos mejoras por experiencia
+		heroe.aumentarNivelDeExperiencia();
 	}
 
 	public Criatura getCriatura() {

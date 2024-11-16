@@ -23,6 +23,7 @@ public class Bosque extends Ubicacion {
     public void reclamarRecompensa(Heroe heroe) {
         Recompensa recompensa =  new Recompensa("Amuleto perdido", 0, 0.15);
         heroe.guardarRecompensa(recompensa);
+        heroe.aumentarExperienciaAcumulada(this.criatura.getNivel());
     }
 
     public Criatura getCriatura() {

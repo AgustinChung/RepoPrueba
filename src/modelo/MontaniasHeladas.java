@@ -21,6 +21,7 @@ public class MontaniasHeladas extends Ubicacion{
     public void reclamarRecompensa(Heroe heroe) {
         Recompensa recompensa = new Recompensa("Espada de Fuego", 0.20, 0);
         heroe.guardarRecompensa(recompensa);
+        heroe.aumentarExperienciaAcumulada(this.criatura.getNivel());
     }
 
     public Criatura getCriatura() {

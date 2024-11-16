@@ -21,6 +21,7 @@ public class ParamoBrumoso extends Ubicacion {
     }
 
     public void reclamarRecompensa(Heroe heroe) {
+        heroe.aumentarExperienciaAcumulada(this.criatura.getNivel());
     }
 
     @Override

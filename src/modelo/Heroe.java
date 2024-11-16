@@ -13,6 +13,7 @@ public abstract class Heroe {
 	protected int nivelDefensaMaximo;
     protected int nivel;
     protected int experiencia;
+	protected int experienciaAcumulada;
     protected List<Recompensa> recompensas;
     
 
@@ -26,6 +27,7 @@ public abstract class Heroe {
 		this.nombreUsuario = nombreUsuario;
         this.nivel = 1;
         this.experiencia = 0;
+		this.experienciaAcumulada = 0;
         this.recompensas =  new ArrayList<>();
     }
 
@@ -97,11 +99,22 @@ public abstract class Heroe {
 		for (Recompensa recompensa : this.recompensas) {
 			recompensasViews.add(recompensa.toView());
 		}
-		return new HeroeView(this.nombre, this.puntosVida, this.nivelAtaque, this.nivelDefensa, this.nombreUsuario, recompensasViews);
+		return new HeroeView(this.nombre, this.puntosVida, this.nivelAtaque, this.nivelDefensa, this.nombreUsuario, recompensasViews, this.experiencia, this.nivelDefensaMaximo, this.puntosVidaMaxima);
 	}
 
 	public void borrarRecompensas() {
 		this.recompensas.clear();
+	}
+
+	public void aumentarNivelDeExperiencia() {
+		// Si acumulo 2 niveles de experiencia, se le suben 20 puntos de defensa y ataque
+		this.nivelDefensaMaximo += this.experienciaAcumulada * 10;
+		this.nivelAtaque += this.experienciaAcumulada * 10;
+		this.experienciaAcumulada = 0; // reseteo el conteo de experiencia acumulada
+	}
+
+	public void aumentarExperienciaAcumulada(int nivelAumento) {
+		this.experienciaAcumulada += nivelAumento;
 	}
 }
 
