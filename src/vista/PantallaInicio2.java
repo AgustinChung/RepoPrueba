@@ -89,7 +89,13 @@ public class PantallaInicio2 extends JFrame {
 
         // Añadir el Container al JFrame
         this.add(customContainer);
+        
+        JButton BotonMostrarUbicaciones = new JButton("VER MAPA");
+        
     }
+    
+    
+    
 
     // Clase para manejar los eventos de los botones de héroe
     class HandlerBotonMago implements ActionListener { 
@@ -98,7 +104,7 @@ public class PantallaInicio2 extends JFrame {
 			Controlador.crearMago("Mago", 100, 60, 50, campoNombre.getText());
 	        String nombreUsuario = campoNombre.getText();
 			JOptionPane.showMessageDialog(null, nombreUsuario + " eligió un Mago ");
-			dispose(); 
+			dispose();
 			//Cada metodo ademas de cerrar la pantalla deberia mostrar la siguiente pantalla?
 
         }
