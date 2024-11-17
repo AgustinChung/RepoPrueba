@@ -101,7 +101,7 @@ public class PantallaInicio extends JFrame {
     class HandlerBotonMago implements ActionListener { 
         @Override
         public void actionPerformed(ActionEvent e) {
-			Controlador.crearMago("Mago", 10, 60, 50, campoNombre.getText());
+			Controlador.crearMago("Mago", 10, 60, 10, campoNombre.getText());
 	        String nombreUsuario = campoNombre.getText();
 			JOptionPane.showMessageDialog(null, nombreUsuario + " eligió un Mago ");
 			dispose();
