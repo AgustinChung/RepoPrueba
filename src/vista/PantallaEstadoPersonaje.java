@@ -23,7 +23,7 @@ public class PantallaEstadoPersonaje extends JFrame {
         customContainer.setLayout(new BorderLayout());
 
         // Cargar y redimensionar la imagen de fondo
-        ImageIcon backgroundImageIcon = new ImageIcon("../fondo1.jpg");
+        ImageIcon backgroundImageIcon = new ImageIcon("src/images/FondoEstadoPersonaje.png");
         Image backgroundImage = backgroundImageIcon.getImage().getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
         JLabel background = new JLabel(new ImageIcon(backgroundImage));
         background.setLayout(new BorderLayout());
