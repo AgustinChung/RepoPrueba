@@ -38,7 +38,7 @@ public class PantallaEstadoPersonaje extends JFrame {
         JLabel labelNombre = new JLabel("Heroe elegido: " + heroe.getNombre(), JLabel.CENTER);
         JLabel labelUsuario = new JLabel("Nombre de usuario: " + heroe.getNombreUsuario(), JLabel.CENTER);
         JLabel labelVida = new JLabel("Puntos de vida: " + heroe.getPuntosVida(), JLabel.CENTER);
-        JLabel labelAtaqueMax = new JLabel("Puntos de vida maxima: " + heroe.getPuntosVidaMaximo(), JLabel.CENTER);
+        JLabel labelVidaMax = new JLabel("Puntos de vida maxima: " + heroe.getPuntosVidaMaximo(), JLabel.CENTER);
         JLabel labelAtaque = new JLabel("Nivel de ataque: " + heroe.getNivelAtaque(), JLabel.CENTER);
         JLabel labelDefensa = new JLabel("Nivel de defensa: " + heroe.getNivelDefensa(), JLabel.CENTER);
         JLabel labelDefensaMax = new JLabel("Nivel de defensa maximo: " + heroe.getNivelDefensaMaximo(), JLabel.CENTER);
@@ -50,7 +50,7 @@ public class PantallaEstadoPersonaje extends JFrame {
         labelUsuario.setForeground(Color.BLACK);
         labelVida.setForeground(Color.BLACK);
         labelAtaque.setForeground(Color.BLACK);
-        labelAtaqueMax.setForeground(Color.BLACK);
+        labelVidaMax.setForeground(Color.BLACK);
         labelDefensa.setForeground(Color.BLACK);
         labelDefensaMax.setForeground(Color.BLACK);
         labelExperiencia.setForeground(Color.BLACK);
@@ -60,8 +60,8 @@ public class PantallaEstadoPersonaje extends JFrame {
         panelDatos.add(labelNombre);
         panelDatos.add(labelUsuario);
         panelDatos.add(labelVida);
+        panelDatos.add(labelVidaMax);
         panelDatos.add(labelAtaque);
-        panelDatos.add(labelAtaqueMax);
         panelDatos.add(labelDefensa);
         panelDatos.add(labelDefensaMax);
         panelDatos.add(labelExperiencia);

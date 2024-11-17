@@ -51,14 +51,10 @@ public class PantallaUbicaciones extends JFrame {
 
         panelTitulo.add(labelTitulo); // Añadir el JLabel al panel
 
-
-
-
-
         // Panel principal que contendrá todos los paneles de ubicaciones
         JPanel panelPrincipal = new JPanel();
-        panelPrincipal.setLayout(new GridLayout(4, 2, 10, 10));
-        panelPrincipal.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        panelPrincipal.setLayout(new GridLayout(0, 2, 30, 10));  // 0 filas (automático), 2 columnas
+        panelPrincipal.setBorder(BorderFactory.createEmptyBorder(20, 100, 20, 100)); // Más padding horizontal
         panelPrincipal.setOpaque(false);
 
         // Obtener ubicaciones del controlador
@@ -379,7 +375,7 @@ public class PantallaUbicaciones extends JFrame {
 
                 //CAMBIAR A UBICACION NEUTRAL
                 botonNeutral.addActionListener(e -> {
-                    PantallaVictoria pantallaNeutral = new PantallaVictoria();
+                    PantallaUbicacionNeutral pantallaNeutral = new PantallaUbicacionNeutral();
                     pantallaNeutral.setVisible(true);
                     this.dispose();
                 });

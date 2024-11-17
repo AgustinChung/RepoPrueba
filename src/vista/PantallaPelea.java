@@ -155,7 +155,13 @@ public class PantallaPelea extends JFrame {
                 botonPelear.setVisible(false);
                 panelBoton.add(botonVolverMapa);
                 botonVolverMapa.setVisible(true);
-
+                JOptionPane.showMessageDialog(null, "GANASTE LA PELEA");
+                botonVolverMapa.addActionListener(ev -> {
+                    dispose();
+                    PantallaUbicaciones pantallaUbi = new PantallaUbicaciones();
+                    pantallaUbi.setVisible(true);
+                });
+                /*
                 if () {
                     JOptionPane.showMessageDialog(null, "GANASTE LA PELEA");
                     botonVolverMapa.addActionListener(ev -> {
@@ -168,7 +174,7 @@ public class PantallaPelea extends JFrame {
                     PantallaVictoria pantallaVictoria = new PantallaVictoria();
                     pantallaVictoria.setVisible(true);
                 }
-
+                */
             } else {
 
                 botonPelear.setVisible(false);
