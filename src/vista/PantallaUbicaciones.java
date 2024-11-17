@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class PantallaUbicaciones extends JFrame {
 
-    private static final String RUTA_BASE = "/Users/nicolasdamm/Desktop/Working Directory/POO_24C2_TPO_Grupo5/src/images/";
+    private static final String RUTA_BASE = "../images/";
 
     public PantallaUbicaciones() {
         // Configuración básica de la ventana
