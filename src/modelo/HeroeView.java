@@ -9,18 +9,18 @@ public class HeroeView {
     private int nivelAtaque;
     private int nivelDefensa;
     private List<RecompensaView> recompensas;
-    private int experiencia;
+    private int experienciaAcumulada;
     private int nivelDefensaMaximo;
     private int puntosVidaMaximo;
 
-    public HeroeView(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario, List<RecompensaView> recompensas, int experiencia, int nivelDefensaMaximo, int puntosVidaMaximo) {
+    public HeroeView(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario, List<RecompensaView> recompensas, int experienciaAcumulada, int nivelDefensaMaximo, int puntosVidaMaximo) {
         this.nombre = nombre;
         this.puntosVida = puntosVida;
         this.nivelAtaque = nivelAtaque;
         this.nivelDefensa = nivelDefensa;
         this.nombreUsuario = nombreUsuario;
         this.recompensas = recompensas;
-        this.experiencia = experiencia;
+        this.experienciaAcumulada = experienciaAcumulada;
         this.nivelDefensaMaximo = nivelDefensaMaximo;
         this.puntosVidaMaximo = puntosVidaMaximo;
     }
@@ -49,8 +49,8 @@ public class HeroeView {
         return this.recompensas;
     }
 
-    public int getExperiencia() {
-        return this.experiencia;
+    public int getExperienciaAcumulada() {
+        return this.experienciaAcumulada;
     }
 
     public int getNivelDefensaMaximo() {

@@ -27,7 +27,9 @@ public class RuinasLyrath extends Ubicacion {
         return this.criatura;
     }
 
-    public void activarSiguientesUbicaciones() {}
+    public void activarSiguientesUbicaciones() {
+        this.desactivarMapa();
+    }
 
     @Override
     public UbicacionView toView() {

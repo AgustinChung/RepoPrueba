@@ -99,7 +99,7 @@ public abstract class Heroe {
 		for (Recompensa recompensa : this.recompensas) {
 			recompensasViews.add(recompensa.toView());
 		}
-		return new HeroeView(this.nombre, this.puntosVida, this.nivelAtaque, this.nivelDefensa, this.nombreUsuario, recompensasViews, this.experiencia, this.nivelDefensaMaximo, this.puntosVidaMaxima);
+		return new HeroeView(this.nombre, this.puntosVida, this.nivelAtaque, this.nivelDefensa, this.nombreUsuario, recompensasViews, this.experienciaAcumulada, this.nivelDefensaMaximo, this.puntosVidaMaxima);
 	}
 
 	public void borrarRecompensas() {

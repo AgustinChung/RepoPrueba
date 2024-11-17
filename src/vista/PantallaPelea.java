@@ -156,10 +156,13 @@ public class PantallaPelea extends JFrame {
                 panelBoton.add(botonVolverMapa);
                 botonVolverMapa.setVisible(true);
                 JOptionPane.showMessageDialog(null, "GANASTE LA PELEA");
-                dispose();
-                PantallaUbicaciones pantallaUbi = new PantallaUbicaciones();
-                pantallaUbi.setVisible(true);
+                botonVolverMapa.addActionListener(ev -> {
+                    dispose();
+                    PantallaUbicaciones pantallaUbi = new PantallaUbicaciones();
+                    pantallaUbi.setVisible(true);
+                });
             } else {
+
                 botonPelear.setVisible(false);
                 panelBoton.add(botonSalir);
                 botonSalir.setVisible(true);
