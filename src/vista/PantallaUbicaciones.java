@@ -10,9 +10,18 @@ import java.util.ArrayList;
 
 public class PantallaUbicaciones extends JFrame {
 
+    private JButton botonEstadoPersonaje;
     private static final String RUTA_BASE = "src/images/";
 
     public PantallaUbicaciones() {
+
+        botonEstadoPersonaje = new JButton("VER ESTADO PERSONAJE");
+        JPanel panelBotonVerMapa = new JPanel();
+        panelBotonVerMapa.setOpaque(false);
+        panelBotonVerMapa.setLayout(new FlowLayout(FlowLayout.LEFT));
+        panelBotonVerMapa.add(botonEstadoPersonaje);
+
+
         // Configuración básica de la ventana
         setTitle("Selecciona tu Destino");
         setSize(750, 600);
@@ -387,8 +396,17 @@ public class PantallaUbicaciones extends JFrame {
         // Agregar título y panel principal al fondo
         fondo.add(panelTitulo, BorderLayout.NORTH);
         fondo.add(panelPrincipal, BorderLayout.CENTER);
+        fondo.add(panelBotonVerMapa, BorderLayout.SOUTH);
+
+        //CAMBIAR A UBICACION NEUTRAL
+        botonEstadoPersonaje.addActionListener(e -> {
+            dispose();
+            Controlador.MostrarPantalla2();
+        });
 
         // Agregar el contenedor a la ventana
         add(contenedor);
     }
+
+
 }
