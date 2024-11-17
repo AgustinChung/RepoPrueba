@@ -14,7 +14,7 @@ public class PantallaEstadoPersonaje extends JFrame {
     public PantallaEstadoPersonaje(HeroeView heroe) {
         // Configuración básica de la ventana
         setTitle("Estado del Héroe");
-        setSize(500, 400);
+        setSize(750, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 

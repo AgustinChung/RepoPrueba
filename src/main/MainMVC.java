@@ -46,8 +46,6 @@ public class MainMVC {
     // * MAIN *
     public static void main(String[] args) {
 
-
-
         PantallaInicio pantalla = new PantallaInicio();
         pantalla.setVisible(true);
 

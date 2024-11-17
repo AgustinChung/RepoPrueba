@@ -15,7 +15,7 @@ public class PantallaUbicaciones extends JFrame {
     public PantallaUbicaciones() {
         // Configuración básica de la ventana
         setTitle("Selecciona tu Destino");
-        setSize(500, 400);
+        setSize(750, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
