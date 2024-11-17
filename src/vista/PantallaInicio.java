@@ -101,7 +101,7 @@ public class PantallaInicio extends JFrame {
     class HandlerBotonMago implements ActionListener { 
         @Override
         public void actionPerformed(ActionEvent e) {
-			Controlador.crearMago("Mago", 100, 60, 50, campoNombre.getText());
+			Controlador.crearMago("Mago", 10, 60, 50, campoNombre.getText());
 	        String nombreUsuario = campoNombre.getText();
 			JOptionPane.showMessageDialog(null, nombreUsuario + " eligió un Mago ");
 			dispose();
@@ -114,7 +114,7 @@ public class PantallaInicio extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-			Controlador.crearGuerrero("Guerrero", 100, 60, 50, campoNombre.getText());
+			Controlador.crearGuerrero("Guerrero", 100000000, 60, 50, campoNombre.getText());
 	        String nombreUsuario = campoNombre.getText();
 			JOptionPane.showMessageDialog(null, nombreUsuario + " eligió un Guerrero");
 			dispose(); 
@@ -124,7 +124,7 @@ public class PantallaInicio extends JFrame {
     class HandlerBotonArquero implements ActionListener { 
         @Override
         public void actionPerformed(ActionEvent e) {
-			Controlador.crearArquero("Mago", 100, 60, 50, campoNombre.getText(), 10, 10);
+			Controlador.crearArquero("Arquero", 1000000000, 60, 50, campoNombre.getText(), 10, 10);
 	        String nombreUsuario = campoNombre.getText();
 			JOptionPane.showMessageDialog(null, nombreUsuario + " eligió un Arquero");
 			dispose(); 
