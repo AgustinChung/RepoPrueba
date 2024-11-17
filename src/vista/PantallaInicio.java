@@ -17,7 +17,7 @@ public class PantallaInicio extends JFrame {
     public PantallaInicio() {
         // Configuración básica de la ventana
         setTitle("Selecciona tu Héroe");
-        setSize(500, 400);
+        setSize(750, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 

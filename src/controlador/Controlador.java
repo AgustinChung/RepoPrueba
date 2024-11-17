@@ -5,7 +5,6 @@ import vista.PantallaEstadoPersonaje;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 //el controlador va a tener metodos estaticos (o pueden ser singleton) que se comunica con la fachada para pedirle cosas y crear cosas.
@@ -15,15 +14,15 @@ public class Controlador {
 	
 	public static void crearGuerrero(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
 		Juego.getInstancia().crearGuerrero(nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario );
-		Controlador.MostrarDatos();
+		Controlador.MostrarPantalla2();
 	}
 	public static void crearMago(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario) {
 		Juego.getInstancia().crearMago(nombre, puntosVida,nivelAtaque,nivelDefensa, nombreUsuario);
-		Controlador.MostrarDatos();
+		Controlador.MostrarPantalla2();
 	}
 	public static void crearArquero(String nombre, int puntosVida, int nivelAtaque, int nivelDefensa, String nombreUsuario, int punteria, int agilidad) {
 		Juego.getInstancia().crearArquero(nombre, puntosVida, nivelAtaque, nivelDefensa, nombreUsuario, punteria, agilidad);
-		Controlador.MostrarDatos();
+		Controlador.MostrarPantalla2();
 	}
 	public static void crearDragon(String nombre, int puntosVida, int nivel, int nivelAtaque, int nivelDefensa) {
 		Juego.getInstancia().crearDragon(nombre, puntosVida, nivel, nivelAtaque, nivelDefensa );
@@ -77,7 +76,7 @@ public class Controlador {
 		return Juego.getInstancia().getHeroe().toView();
 	}
 	
-	public static void MostrarDatos() {
+	public static void MostrarPantalla2() {
 			HeroeView heroe = Controlador.getHeroe();
 	        PantallaEstadoPersonaje pantallaEstadoPersonaje = new PantallaEstadoPersonaje(heroe);
 	        pantallaEstadoPersonaje.setVisible(true);
