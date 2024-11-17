@@ -187,4 +187,5 @@ public class PantallaPelea extends JFrame {
         // Agregar el contenedor al frame
         this.add(customContainer);
     }
+
 }
