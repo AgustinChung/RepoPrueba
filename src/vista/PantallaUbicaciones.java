@@ -379,7 +379,7 @@ public class PantallaUbicaciones extends JFrame {
 
                 //CAMBIAR A UBICACION NEUTRAL
                 botonNeutral.addActionListener(e -> {
-                    PantallaUbicacionNeutral pantallaNeutral = new PantallaUbicacionNeutral();
+                    PantallaVictoria pantallaNeutral = new PantallaVictoria();
                     pantallaNeutral.setVisible(true);
                     this.dispose();
                 });
