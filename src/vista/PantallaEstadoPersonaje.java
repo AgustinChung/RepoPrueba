@@ -38,8 +38,8 @@ public class PantallaEstadoPersonaje extends JFrame {
         JLabel labelNombre = new JLabel("Heroe elegido: " + heroe.getNombre(), JLabel.CENTER);
         JLabel labelUsuario = new JLabel("Nombre de usuario: " + heroe.getNombreUsuario(), JLabel.CENTER);
         JLabel labelVida = new JLabel("Puntos de vida: " + heroe.getPuntosVida(), JLabel.CENTER);
+        JLabel labelAtaqueMax = new JLabel("Puntos de vida maxima: " + heroe.getPuntosVidaMaximo(), JLabel.CENTER);
         JLabel labelAtaque = new JLabel("Nivel de ataque: " + heroe.getNivelAtaque(), JLabel.CENTER);
-        JLabel labelAtaqueMax = new JLabel("Nivel de ataque maximo: " + heroe.getPuntosVidaMaximo(), JLabel.CENTER);
         JLabel labelDefensa = new JLabel("Nivel de defensa: " + heroe.getNivelDefensa(), JLabel.CENTER);
         JLabel labelDefensaMax = new JLabel("Nivel de defensa maximo: " + heroe.getNivelDefensaMaximo(), JLabel.CENTER);
         JLabel labelExperiencia = new JLabel("Nivel de experiencia acumulada: " + heroe.getExperienciaAcumulada(), JLabel.CENTER);
