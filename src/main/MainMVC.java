@@ -3,6 +3,8 @@ package main;
 import controlador.Controlador;
 import modelo.*;
 import vista.PantallaInicio;
+import vista.PantallaPelea;
+import vista.PantallaUbicaciones;
 
 import java.util.List;
 
@@ -50,7 +52,8 @@ public class MainMVC {
         pantalla.setVisible(true);
 
 
-    	//PantallaUbicaciones pantalla = new PantallaUbicaciones();
+
+    	//PantallaPelea pantalla = new PantallaPelea();
         //pantalla.setVisible(true);
 
 

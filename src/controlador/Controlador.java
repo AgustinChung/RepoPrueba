@@ -46,7 +46,6 @@ public class Controlador {
 			ubicacionesView.add(ubicacion.toView());
 		}
 		return ubicacionesView;
-		
 	}
 
 	// el usuario apreta el boton de la ubicacion a donde quiere viajar. El view, llama a controlador.viajar(nombreUbicacion), el controlador devuelve
@@ -78,9 +77,10 @@ public class Controlador {
 		return Juego.getInstancia().getHeroe().toView();
 	}
 	
-	 public static void MostrarDatos() {
+	public static void MostrarDatos() {
 			HeroeView heroe = Controlador.getHeroe();
 	        PantallaEstadoPersonaje pantallaEstadoPersonaje = new PantallaEstadoPersonaje(heroe);
 	        pantallaEstadoPersonaje.setVisible(true);
-	    }
+	}
+
 }
