@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class PantallaUbicaciones extends JFrame {
 
-    private static final String RUTA_BASE = "../images/";
+    private static final String RUTA_BASE = "src/images/";
 
     public PantallaUbicaciones() {
         // Configuración básica de la ventana
@@ -24,7 +24,7 @@ public class PantallaUbicaciones extends JFrame {
         contenedor.setLayout(new BorderLayout());
 
         // Configurar imagen de fondo
-        ImageIcon iconoFondo = new ImageIcon(RUTA_BASE + "fondo.png");
+        ImageIcon iconoFondo = new ImageIcon(RUTA_BASE + "mapaUbicaciones.png");
         Image imagenFondo = iconoFondo.getImage().getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
         JLabel fondo = new JLabel(new ImageIcon(imagenFondo));
         fondo.setLayout(new BorderLayout());

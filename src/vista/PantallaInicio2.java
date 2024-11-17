@@ -26,7 +26,7 @@ public class PantallaInicio2 extends JFrame {
         customContainer.setLayout(new BorderLayout());
 
         // Cargar y redimensionar la imagen de fondo
-        ImageIcon backgroundImageIcon = new ImageIcon("C:/Users/agust/OneDrive/Desktop/imagenesPOO/fondo.png");
+        ImageIcon backgroundImageIcon = new ImageIcon("src/images/FondoInicio.png");
         Image backgroundImage = backgroundImageIcon.getImage().getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
         JLabel background = new JLabel(new ImageIcon(backgroundImage));
         background.setLayout(new BorderLayout());
@@ -48,7 +48,7 @@ public class PantallaInicio2 extends JFrame {
 
         // Configuración del botón y la imagen del héroe "Mago"
         botonMago = new JButton("Mago");
-        ImageIcon iconoMago = new ImageIcon(new ImageIcon("C:/Users/agust/OneDrive/Desktop/imagenesPOO/mago.png").getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
+        ImageIcon iconoMago = new ImageIcon(new ImageIcon("src/images/Mago.png").getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
         JLabel imagenMago = new JLabel(iconoMago);
         JPanel panelMago = new JPanel();
         panelMago.setOpaque(false);
@@ -58,7 +58,7 @@ public class PantallaInicio2 extends JFrame {
 
         // Configuración del botón y la imagen del héroe "Guerrero"
         botonGuerrero = new JButton("Guerrero");
-        ImageIcon iconoGuerrero = new ImageIcon(new ImageIcon("C:/Users/agust/OneDrive/Desktop/imagenesPOO/guerrero.png")
+        ImageIcon iconoGuerrero = new ImageIcon(new ImageIcon("src/images/Guerrero.png")
                             .getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
         JLabel imagenGuerrero = new JLabel(iconoGuerrero);
         JPanel panelGuerrero = new JPanel();
@@ -69,7 +69,7 @@ public class PantallaInicio2 extends JFrame {
 
         // Configuración del botón y la imagen del héroe "Arquero"
         botonArquero = new JButton("Arquero");
-        ImageIcon iconoArquero = new ImageIcon(new ImageIcon("C:/Users/agust/OneDrive/Desktop/imagenesPOO/arquero.png")
+        ImageIcon iconoArquero = new ImageIcon(new ImageIcon("src/images/Arquero.png")
                             .getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
         JLabel imagenArquero = new JLabel(iconoArquero);
         JPanel panelArquero = new JPanel();
