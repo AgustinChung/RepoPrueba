@@ -2,9 +2,7 @@ package main;
 
 import controlador.Controlador;
 import modelo.*;
-import vista.PantallaEstadoPersonaje;
-import vista.PantallaInicio2;
-import vista.PantallaUbicaciones;
+import vista.PantallaInicio;
 
 import java.util.List;
 
@@ -48,7 +46,7 @@ public class MainMVC {
 
 
 
-        PantallaInicio2 pantalla = new PantallaInicio2();
+        PantallaInicio pantalla = new PantallaInicio();
         pantalla.setVisible(true);
 
 
