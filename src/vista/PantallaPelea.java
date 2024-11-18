@@ -149,8 +149,17 @@ public class PantallaPelea extends JFrame {
 
         botonPelear.addActionListener(e -> {
             HeroeView heroeViewPostPelea = Controlador.pelear(ubicacionView, criaturaView);
-            panelDatosHeroe.setVisible(false);
-            panelDatosCriatura.setVisible(false);
+            // Actualizar los labels con los nuevos valores del héroe
+            puntosVidaHeroe.setText("Puntos de vida: " + heroeViewPostPelea.getPuntosVida());
+            puntosAtaqueHeroe.setText("Puntos de ataque: " + heroeViewPostPelea.getNivelAtaque());
+            puntosDefensaHeroe.setText("Puntos de defensa: " + heroeViewPostPelea.getNivelDefensa());
+
+            // Actualizar los labels con los nuevos valores de la criatura
+            CriaturaView criaturaViewPostPelea = ubicacionView.getCriatura();
+            puntosVidaCriatura.setText("Puntos de vida: " + criaturaViewPostPelea.getPuntosVida());
+            puntosAtaqueCriatura.setText("Puntos de ataque: " + criaturaViewPostPelea.getNivelAtaque());
+            puntosDefensaCriatura.setText("Puntos de defensa: " + criaturaViewPostPelea.getNivelDefensa());
+
             if (heroeViewPostPelea.getPuntosVida() > 0) {
                 botonPelear.setVisible(false);
                 panelBoton.add(botonVolverMapa);
@@ -181,13 +190,13 @@ public class PantallaPelea extends JFrame {
                 panelBoton.add(botonSalir);
                 botonSalir.setVisible(true);
                 JOptionPane.showMessageDialog(null,"PERDISTE LA PELEA");
-                dispose();
-                PantallaDerrota pantallaDerrota = new PantallaDerrota();
-                pantallaDerrota.setVisible(true);
+                botonSalir.addActionListener(ev -> {
+                    dispose();
+                    PantallaDerrota pantallaDerrota = new PantallaDerrota();
+                    pantallaDerrota.setVisible(true);
+                });
             }
-
-
-
+            
         });
 
         panelBoton.add(botonPelear);
