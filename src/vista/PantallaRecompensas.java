@@ -3,58 +3,63 @@ package vista;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.naming.ldap.Control;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 
 import controlador.Controlador;
 import modelo.HeroeView;
+import modelo.RecompensaView;
 import modelo.UbicacionView;
 
-
-
-
-public class PantallaUbicacionNeutral extends JFrame {
-    private JButton botonVolverMapa;
-    private JButton botonDescansar;
+public class PantallaRecompensas extends JFrame {
+    private JButton botonVerRecompensas;
     private JButton botonReclamarRecompensas;
-    UbicacionView ubicacionView = Controlador.viajar("Ubicacion Neutral");
+    private JButton botonVolver;
+    private UbicacionView ubicacionView;
 
-    private class HandlerBotonVolverMapa implements ActionListener {
+    // Definir los handlers como clases internas
+    private class HandlerBotonVerRecompensas implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            PantallaUbicaciones pantallaUbi = new PantallaUbicaciones();
-            pantallaUbi.setVisible(true);
-            dispose();
-        }
-    }
-
-    private class HandlerBotonDescansar implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            HeroeView heroeView = Controlador.getHeroe();
-            if (heroeView.getPuntosVidaMaximo() > heroeView.getPuntosVida() || heroeView.getNivelDefensaMaximo() > heroeView.getNivelDefensa()) {
-                Controlador.curarHeroe(ubicacionView);
-                JOptionPane.showMessageDialog(null, "Descansaste. Tus puntos de vida aumentaron a " + heroeView.getPuntosVidaMaximo() + ", y los puntos de defensa aumentaron a " + heroeView.getNivelDefensaMaximo());
+            if (Controlador.getNombresRecompensas().size() == 0) {
+                JOptionPane.showMessageDialog(null, "No tenes recompensas disponibles para reclamar");
             } else {
-                JOptionPane.showMessageDialog(null, "Ya tenes los puntos de vida y defensa al maximo");
+                JOptionPane.showMessageDialog(null, "Tus recompensas son: " + Controlador.getNombresRecompensas());
             }
-            botonDescansar.setVisible(false);
+            botonVerRecompensas.setVisible(false);
         }
     }
 
     private class HandlerBotonReclamarRecompensas implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            PantallaRecompensas pantallaRecompensas = new PantallaRecompensas(ubicacionView);
-            pantallaRecompensas.setVisible(true);
+            if (Controlador.getNombresRecompensas().size() == 0) {
+                JOptionPane.showMessageDialog(null, "No tenes recompensas disponibles para reclamar");
+            } else {
+                Controlador.reclamarRecompensaHeroe(ubicacionView);
+                JOptionPane.showMessageDialog(null, "Reclamaste tus recompensas");
+            }
+            botonReclamarRecompensas.setVisible(false);
         }
     }
 
-    public PantallaUbicacionNeutral() {
+    private class HandlerBotonVolver implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            PantallaUbicacionNeutral pantallaNeutral = new PantallaUbicacionNeutral();
+            pantallaNeutral.setVisible(true);
+            dispose();
+        }
+    }
+
+
+    public PantallaRecompensas(UbicacionView ubicacionView) {
+        this.ubicacionView = ubicacionView;
         HeroeView heroeView = Controlador.getHeroe();
 
         // Configuración básica de la ventana
-        setTitle("UBICACION NEUTRAL");
+        setTitle("RECOMPENSAS");
         setSize(750, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -69,28 +74,28 @@ public class PantallaUbicacionNeutral extends JFrame {
         JLabel background = new JLabel(new ImageIcon(backgroundImage));
         background.setLayout(new BorderLayout());
 
-        // Panel central para los botones con GridLayout (5 filas, 1 columna, espacio vertical 20)
+        // Panel central para los botones con GridLayout
         JPanel panelBotones = new JPanel(new GridLayout(5, 1, 0, 20));
         panelBotones.setOpaque(false);
 
         // Crear la fuente para los botones
-        Font buttonFont = new Font("Arial", Font.BOLD, 20); // Puedes ajustar el tamaño (20) según necesites
+        Font buttonFont = new Font("Arial", Font.BOLD, 20);
 
         // Crear los botones
-        botonVolverMapa = new JButton("VOLVER AL MAPA");
-        botonDescansar = new JButton("DESCANSAR");
+        botonVerRecompensas = new JButton("VER RECOMPENSAS");
         botonReclamarRecompensas = new JButton("RECLAMAR RECOMPENSAS");
+        botonVolver = new JButton("VOLVER A UBICACION NEUTRAL");
 
         // Aplicar la fuente a los botones
-        botonVolverMapa.setFont(buttonFont);
-        botonDescansar.setFont(buttonFont);
+        botonVerRecompensas.setFont(buttonFont);
         botonReclamarRecompensas.setFont(buttonFont);
+        botonVolver.setFont(buttonFont);
 
         // Configurar tamaño preferido para los botones
         Dimension buttonSize = new Dimension(200, 40);
-        botonVolverMapa.setPreferredSize(buttonSize);
-        botonDescansar.setPreferredSize(buttonSize);
+        botonVerRecompensas.setPreferredSize(buttonSize);
         botonReclamarRecompensas.setPreferredSize(buttonSize);
+        botonVolver.setPreferredSize(buttonSize);
 
         // Paneles vacíos para espaciado
         JPanel espacioSuperior = new JPanel();
@@ -100,15 +105,15 @@ public class PantallaUbicacionNeutral extends JFrame {
 
         // Agregar componentes al panel de botones
         panelBotones.add(espacioSuperior);
-        panelBotones.add(botonDescansar);
+        panelBotones.add(botonVerRecompensas);
         panelBotones.add(botonReclamarRecompensas);
-        panelBotones.add(botonVolverMapa);
+        panelBotones.add(botonVolver);
         panelBotones.add(espacioInferior);
 
         // Agregar ActionListeners
-        botonVolverMapa.addActionListener(new HandlerBotonVolverMapa());
-        botonDescansar.addActionListener(new HandlerBotonDescansar());
+        botonVerRecompensas.addActionListener(new HandlerBotonVerRecompensas());
         botonReclamarRecompensas.addActionListener(new HandlerBotonReclamarRecompensas());
+        botonVolver.addActionListener(new HandlerBotonVolver());
 
         // Agregar el panel de botones al centro del background
         background.add(panelBotones, BorderLayout.CENTER);
