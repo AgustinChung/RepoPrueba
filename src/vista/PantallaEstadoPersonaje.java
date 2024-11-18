@@ -5,6 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import modelo.HeroeView;
+import modelo.RecompensaView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class PantallaEstadoPersonaje extends JFrame {
@@ -43,7 +47,12 @@ public class PantallaEstadoPersonaje extends JFrame {
         JLabel labelDefensa = new JLabel("Nivel de defensa: " + heroe.getNivelDefensa(), JLabel.CENTER);
         JLabel labelDefensaMax = new JLabel("Nivel de defensa maximo: " + heroe.getNivelDefensaMaximo(), JLabel.CENTER);
         JLabel labelExperiencia = new JLabel("Nivel de experiencia acumulada: " + heroe.getExperienciaAcumulada(), JLabel.CENTER);
-        JLabel labelRecompensas = new JLabel("Recompensas: " + heroe.getRecompensas(), JLabel.CENTER);
+
+        List<String> nombresRecompensas = new ArrayList<>();
+        for(RecompensaView recompensa : heroe.getRecompensas()) {
+            nombresRecompensas.add(recompensa.getNombre());
+        }
+        JLabel labelRecompensas = new JLabel("Recompensas: " + String.join(", ", nombresRecompensas), JLabel.CENTER);
 
         // Configurar texto en negro
         labelNombre.setForeground(Color.BLACK);
