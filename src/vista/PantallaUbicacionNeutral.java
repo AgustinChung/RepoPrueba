@@ -101,7 +101,7 @@ public class PantallaUbicacionNeutral extends JFrame {
         public void actionPerformed(ActionEvent e) {
             Controlador.curarHeroe(ubicacionView);
             JOptionPane.showMessageDialog(null,"Descansaste");
-
+            botonDescansar.setVisible(false);
         }
     }
 
@@ -110,6 +110,7 @@ public class PantallaUbicacionNeutral extends JFrame {
         public void actionPerformed(ActionEvent e) {
             Controlador.reclamarRecompensaHeroe(ubicacionView);
             JOptionPane.showMessageDialog(null,"Reclamaste tus recompensas");
+            botonReclamarRecompensas.setVisible(false);
         }
     }
 }
