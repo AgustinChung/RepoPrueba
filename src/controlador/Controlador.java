@@ -87,4 +87,8 @@ public class Controlador {
 		PantallaEstadoPersonaje pantallaEstadoPersonaje = new PantallaEstadoPersonaje(heroe);
 		pantallaEstadoPersonaje.setVisible(true);
 	}
+
+	public static boolean juegoGanado(UbicacionView ubicacion) {
+		return Juego.getInstancia().juegoGanado(ubicacion.getIdUbicacion());
+	}
 }
