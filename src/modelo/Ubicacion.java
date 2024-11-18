@@ -8,6 +8,7 @@ public abstract class Ubicacion {
 	private String nombre;
 	private Heroe heroe;
 	private boolean estaActivo;
+	private boolean ubicacionGanada;
 
 	protected Ubicacion(String nombre, Heroe heroe, boolean estaActivo) {
 		contador++;
@@ -15,6 +16,7 @@ public abstract class Ubicacion {
 		this.setNombre(nombre);
 		this.heroe = heroe;
 		this.estaActivo = estaActivo;
+		this.ubicacionGanada = false;
 	}
 
 	public abstract void reclamarRecompensa(Heroe heroe);
@@ -45,5 +47,13 @@ public abstract class Ubicacion {
 
 	protected void desactivarMapa() {
 		this.estaActivo = false;
+	}
+
+	public void ubicacionGanada() {
+		this.ubicacionGanada = true;
+	}
+
+	public boolean getUbicacionGanada() {
+		return this.ubicacionGanada;
 	}
 }

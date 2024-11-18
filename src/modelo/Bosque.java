@@ -7,7 +7,6 @@ public class Bosque extends Ubicacion {
     private boolean tieneTesoro;
     private Criatura criatura;
     private List<Ubicacion> nombresUbiDesbloquea;
-
 	
 	public Bosque(String nombre, Heroe heroe, Criatura criatura, boolean estaActivo ,boolean tieneTesoro, List<Ubicacion> nombresUbiDesbloquea) {
         super(nombre, heroe, estaActivo);
@@ -33,7 +32,9 @@ public class Bosque extends Ubicacion {
     public void activarSiguientesUbicaciones() {
         this.desactivarMapa();
         for (Ubicacion ubicacion : this.nombresUbiDesbloquea) {
-            ubicacion.activarMapa();
+            if (!ubicacion.getUbicacionGanada()) {
+                ubicacion.activarMapa();
+            }
         }
     }
 

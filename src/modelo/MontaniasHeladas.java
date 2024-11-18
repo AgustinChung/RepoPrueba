@@ -31,7 +31,9 @@ public class MontaniasHeladas extends Ubicacion{
     public void activarSiguientesUbicaciones() {
         this.desactivarMapa();
         for (Ubicacion ubicacion : this.nombresUbiDesbloquea) {
-            ubicacion.activarMapa();
+            if (!ubicacion.getUbicacionGanada()) {
+                ubicacion.activarMapa();
+            }
         }
     }
 

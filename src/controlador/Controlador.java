@@ -66,7 +66,7 @@ public class Controlador {
 		return null;
 	}
 
-	public static HeroeView pelear(UbicacionView ubicacion, CriaturaView criatura) { // preguntarle al profe si esta bien arrancar la secuencia con este metodo
+	public static HeroeView pelear(UbicacionView ubicacion, CriaturaView criatura) {
 		Juego.getInstancia().generarPelea(ubicacion.getIdUbicacion(), criatura.getIdCriatura());
 		HeroeView heroe = Juego.getInstancia().getHeroe().toView();
 		return heroe;
@@ -86,6 +86,10 @@ public class Controlador {
 		HeroeView heroe = Controlador.getHeroe();
 		PantallaEstadoPersonaje pantallaEstadoPersonaje = new PantallaEstadoPersonaje(heroe);
 		pantallaEstadoPersonaje.setVisible(true);
+	}
+
+	public static void ubicacionGanada(UbicacionView ubicacion) {
+		Juego.getInstancia().ubicacionGanada(ubicacion.getIdUbicacion());
 	}
 
 	public static boolean juegoGanado(UbicacionView ubicacion) {

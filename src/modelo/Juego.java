@@ -188,13 +188,18 @@ public class Juego {
 		}
 	}
 
+	public void ubicacionGanada(String idUbicacion) {
+		Ubicacion ubicacion = buscarUbicacion(idUbicacion);
+		if (!esUbicacionNeutral(ubicacion) && ubicacion != null) {
+			ubicacion.ubicacionGanada();
+		}
+	}
+
 	public boolean juegoGanado(String idUbicacion) {
 		Ubicacion ubicacion = buscarUbicacion(idUbicacion);
 		boolean juegoGanado = false;
-		if (!this.esUbicacionNeutral(ubicacion)) {
-			if(ubicacion != null) {
-				juegoGanado = ubicacion.juegoGanado();
-			}
+		if (!this.esUbicacionNeutral(ubicacion) && ubicacion != null) {
+			juegoGanado = ubicacion.juegoGanado();
 		}
 		return juegoGanado;
 	}
