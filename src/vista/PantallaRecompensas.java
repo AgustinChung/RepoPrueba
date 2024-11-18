@@ -69,7 +69,7 @@ public class PantallaRecompensas extends JFrame {
         customContainer.setLayout(new BorderLayout());
 
         // Cargar y redimensionar la imagen de fondo
-        ImageIcon backgroundImageIcon = new ImageIcon("src/images/FondoNeutral.png");
+        ImageIcon backgroundImageIcon = new ImageIcon("src/images/fondoRecompensas.png");
         Image backgroundImage = backgroundImageIcon.getImage().getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
         JLabel background = new JLabel(new ImageIcon(backgroundImage));
         background.setLayout(new BorderLayout());
