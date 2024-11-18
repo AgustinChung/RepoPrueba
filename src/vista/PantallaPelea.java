@@ -162,34 +162,26 @@ public class PantallaPelea extends JFrame {
 
             if (heroeViewPostPelea.getPuntosVida() > 0) {
                 botonPelear.setVisible(false);
-                panelBoton.add(botonVolverMapa);
-                botonVolverMapa.setVisible(true);
-                JOptionPane.showMessageDialog(null, "GANASTE LA PELEA");
-                botonVolverMapa.addActionListener(ev -> {
-                    dispose();
-                    PantallaUbicaciones pantallaUbi = new PantallaUbicaciones();
-                    pantallaUbi.setVisible(true);
-                });
-                /*
-                if () {
+                if (!Controlador.juegoGanado(ubicacionView)) {
                     JOptionPane.showMessageDialog(null, "GANASTE LA PELEA");
+                    panelBoton.add(botonVolverMapa);
+                    botonVolverMapa.setVisible(true);
                     botonVolverMapa.addActionListener(ev -> {
                         dispose();
                         PantallaUbicaciones pantallaUbi = new PantallaUbicaciones();
                         pantallaUbi.setVisible(true);
                     });
                 } else {
-                    dispose();
+                    JOptionPane.showMessageDialog(null, "ENCONSTRASTE EL TESORO; GANASTE EL JUEGO. FELICIDADES.");
                     PantallaVictoria pantallaVictoria = new PantallaVictoria();
                     pantallaVictoria.setVisible(true);
+                    dispose();
                 }
-                */
             } else {
-
                 botonPelear.setVisible(false);
                 panelBoton.add(botonSalir);
                 botonSalir.setVisible(true);
-                JOptionPane.showMessageDialog(null,"PERDISTE LA PELEA");
+                JOptionPane.showMessageDialog(null,"PERDISTE LA PELEA. LO LAMENTO.");
                 botonSalir.addActionListener(ev -> {
                     dispose();
                     PantallaDerrota pantallaDerrota = new PantallaDerrota();
