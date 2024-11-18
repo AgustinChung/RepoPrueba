@@ -113,34 +113,52 @@ public class PantallaInicio extends JFrame {
         return panel;
     }
 
-    // Los action listeners se mantienen igual
+    private boolean validarNombre() {
+        String nombre = campoNombre.getText().trim();
+        if(nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "Por favor ingrese un nombre de usuario",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            campoNombre.requestFocus();
+            return false;
+        }
+        return true;
+    }
+
     class HandlerBotonMago implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Controlador.crearMago("Mago", 10, 60, 10, campoNombre.getText());
-            String nombreUsuario = campoNombre.getText();
-            JOptionPane.showMessageDialog(null, nombreUsuario + " eligió un Mago ");
-            dispose();
+            if(validarNombre()) {
+                String nombreUsuario = campoNombre.getText().trim();
+                Controlador.crearMago("Mago", 10, 60, 10, nombreUsuario);
+                JOptionPane.showMessageDialog(null, nombreUsuario + " eligió un Mago ");
+                dispose();
+            }
         }
     }
 
     class HandlerBotonGuerrero implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Controlador.crearGuerrero("Guerrero", 100000000, 60, 50, campoNombre.getText());
-            String nombreUsuario = campoNombre.getText();
-            JOptionPane.showMessageDialog(null, nombreUsuario + " eligió un Guerrero");
-            dispose();
+            if(validarNombre()) {
+                String nombreUsuario = campoNombre.getText().trim();
+                Controlador.crearGuerrero("Guerrero", 100000000, 60, 50, nombreUsuario);
+                JOptionPane.showMessageDialog(null, nombreUsuario + " eligió un Guerrero");
+                dispose();
+            }
         }
     }
 
     class HandlerBotonArquero implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Controlador.crearArquero("Arquero", 1000000000, 60, 50, campoNombre.getText(), 10, 10);
-            String nombreUsuario = campoNombre.getText();
-            JOptionPane.showMessageDialog(null, nombreUsuario + " eligió un Arquero");
-            dispose();
+            if(validarNombre()) {
+                String nombreUsuario = campoNombre.getText().trim();
+                Controlador.crearArquero("Arquero", 1000000000, 60, 50, nombreUsuario, 10, 10);
+                JOptionPane.showMessageDialog(null, nombreUsuario + " eligió un Arquero");
+                dispose();
+            }
         }
     }
 }
