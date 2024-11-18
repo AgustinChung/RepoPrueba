@@ -88,7 +88,7 @@ public class Controlador {
 		pantallaEstadoPersonaje.setVisible(true);
 	}
 
-	public List<String> getNombresRecompensas() {
+	public static List<String> getNombresRecompensas() {
 		List<String> nombresRecompensas = new ArrayList<>();
 		for(RecompensaView recompensa : Controlador.getHeroe().getRecompensas()) {
 			nombresRecompensas.add(recompensa.getNombre());

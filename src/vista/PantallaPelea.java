@@ -170,6 +170,7 @@ public class PantallaPelea extends JFrame {
                         dispose();
                         PantallaUbicaciones pantallaUbi = new PantallaUbicaciones();
                         pantallaUbi.setVisible(true);
+                        Controlador.ubicacionGanada(ubicacionView);
                     });
                 } else {
                     JOptionPane.showMessageDialog(null, "ENCONSTRASTE EL TESORO; GANASTE EL JUEGO. FELICIDADES.");
