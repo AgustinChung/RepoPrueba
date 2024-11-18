@@ -88,6 +88,14 @@ public class Controlador {
 		pantallaEstadoPersonaje.setVisible(true);
 	}
 
+	public List<String> getNombresRecompensas() {
+		List<String> nombresRecompensas = new ArrayList<>();
+		for(RecompensaView recompensa : Controlador.getHeroe().getRecompensas()) {
+			nombresRecompensas.add(recompensa.getNombre());
+		}
+		return nombresRecompensas;
+	}
+
 	public static void ubicacionGanada(UbicacionView ubicacion) {
 		Juego.getInstancia().ubicacionGanada(ubicacion.getIdUbicacion());
 	}
