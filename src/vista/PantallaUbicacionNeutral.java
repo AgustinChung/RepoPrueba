@@ -38,7 +38,6 @@ public class PantallaUbicacionNeutral extends JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Ya tenes los puntos de vida y defensa al maximo");
             }
-            botonDescansar.setVisible(false);
         }
     }
 
@@ -47,6 +46,7 @@ public class PantallaUbicacionNeutral extends JFrame {
         public void actionPerformed(ActionEvent e) {
             PantallaRecompensas pantallaRecompensas = new PantallaRecompensas(ubicacionView);
             pantallaRecompensas.setVisible(true);
+            dispose();
         }
     }
 
