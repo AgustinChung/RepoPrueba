@@ -45,11 +45,11 @@ public class PantallaPelea extends JFrame {
         JPanel panelSuperior = new JPanel(new GridLayout(1, 2, 10, 10));
         panelSuperior.setOpaque(false);
 
-        // Panel izquierdo que contendrá el panel del arquero y el panel de datos
+        // Panel izquierdo que contendrá el panel del heroe y el panel de sus datos
         JPanel panelIzquierdo = new JPanel(new GridLayout(2, 1, 0, 0));
         panelIzquierdo.setOpaque(false);
 
-        // Panel para el Arquero
+        // Panel para el heroe
         JPanel panelHeroe = new JPanel();
         panelHeroe.setOpaque(false);
         ImageIcon iconoHeroe = new ImageIcon(new ImageIcon("src/images/"+nombreHeroe+".png")
@@ -79,15 +79,15 @@ public class PantallaPelea extends JFrame {
         panelDatosHeroe.add(puntosAtaqueHeroe);
         panelDatosHeroe.add(puntosDefensaHeroe);
 
-        // Añadir paneles de arquero y datos al panel izquierdo
+        // Añadir paneles de heroe y sus datos al panel izquierdo
         panelIzquierdo.add(panelHeroe);
         panelIzquierdo.add(panelDatosHeroe);
 
-        // Panel izquierdo que contendrá el panel del arquero y el panel de datos
+        // Panel izquierdo que contendrá el panel del heroe y el panel de sus datos
         JPanel panelDerecho = new JPanel(new GridLayout(2, 1, 0, 0));
         panelDerecho.setOpaque(false);
 
-        // Panel para el Arquero
+        // Panel para el heroe
         JPanel panelCriatura = new JPanel();
         panelCriatura.setOpaque(false);
         ImageIcon iconoCriatura = new ImageIcon(new ImageIcon("src/images/"+nombreCriatura+".png")
@@ -118,7 +118,7 @@ public class PantallaPelea extends JFrame {
         panelDatosCriatura.add(puntosAtaqueCriatura);
         panelDatosCriatura.add(puntosDefensaCriatura);
 
-        // Añadir paneles de arquero y datos al panel izquierdo
+        // Añadir paneles de heroe y sus datos al panel izquierdo
         panelDerecho.add(panelCriatura);
         panelDerecho.add(panelDatosCriatura);
 
