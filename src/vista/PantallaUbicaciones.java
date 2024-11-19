@@ -372,8 +372,6 @@ public class PantallaUbicaciones extends JFrame {
                 botonNeutral.setBorderPainted(true);
                 botonNeutral.setContentAreaFilled(false);
 
-
-                //CAMBIAR A UBICACION NEUTRAL
                 botonNeutral.addActionListener(e -> {
                     PantallaUbicacionNeutral pantallaNeutral = new PantallaUbicacionNeutral();
                     pantallaNeutral.setVisible(true);

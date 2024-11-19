@@ -70,11 +70,4 @@ public class PantallaDerrota extends JFrame {
         }
     }
 
-    // Método principal para ejecutar la ventana
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            PantallaDerrota pantalla = new PantallaDerrota();
-            pantalla.setVisible(true);
-        });
-    }
 }
