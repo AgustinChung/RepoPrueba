@@ -12,7 +12,7 @@ public class PantallaPelea extends JFrame {
     private JButton botonPelear;
     private JButton botonVolverMapa;
     private JButton botonSalir;
-
+    private boolean peleaFinalizada = false;
 
 
     public PantallaPelea(UbicacionView ubicacionView) {
@@ -52,7 +52,7 @@ public class PantallaPelea extends JFrame {
         // Panel para el heroe
         JPanel panelHeroe = new JPanel();
         panelHeroe.setOpaque(false);
-        ImageIcon iconoHeroe = new ImageIcon(new ImageIcon("src/images/"+nombreHeroe+".png")
+        ImageIcon iconoHeroe = new ImageIcon(new ImageIcon("src/images/" + nombreHeroe + ".png")
                 .getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
         JLabel imagenHeroe = new JLabel(iconoHeroe);
         panelHeroe.add(imagenHeroe);
@@ -90,7 +90,7 @@ public class PantallaPelea extends JFrame {
         // Panel para el heroe
         JPanel panelCriatura = new JPanel();
         panelCriatura.setOpaque(false);
-        ImageIcon iconoCriatura = new ImageIcon(new ImageIcon("src/images/"+nombreCriatura+".png")
+        ImageIcon iconoCriatura = new ImageIcon(new ImageIcon("src/images/" + nombreCriatura + ".png")
                 .getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
         JLabel imagenCriatura = new JLabel(iconoCriatura);
         panelCriatura.add(imagenCriatura);
@@ -126,26 +126,27 @@ public class PantallaPelea extends JFrame {
         panelSuperior.add(panelIzquierdo);
         panelSuperior.add(panelDerecho);
 
-        JPanel panelBotonVolver = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        panelBotonVolver.setOpaque(false);
+        // Panel para el botón
+        JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        panelBoton.setOpaque(false);
+
         botonVolverMapa = new JButton("Volver al mapa");
         botonVolverMapa.setPreferredSize(new Dimension(200, 40));
         botonVolverMapa.setFont(new Font("Arial", Font.BOLD, 19));
-        botonVolverMapa.setVisible(false);
+        botonVolverMapa.setVisible(true);
 
-        JPanel panelBotonSalir = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        panelBotonSalir.setOpaque(false);
         botonSalir = new JButton("Salir");
         botonSalir.setPreferredSize(new Dimension(120, 40));
         botonSalir.setFont(new Font("Arial", Font.BOLD, 19));
         botonSalir.setVisible(false);
 
-        // Panel para el botón
-        JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        panelBoton.setOpaque(false);
         botonPelear = new JButton("Pelear");
         botonPelear.setPreferredSize(new Dimension(120, 40));
         botonPelear.setFont(new Font("Arial", Font.BOLD, 19));
+        botonPelear.setVisible(true);
+
+        panelBoton.add(botonVolverMapa);
+        panelBoton.add(botonPelear);
 
         botonPelear.addActionListener(e -> {
             HeroeView heroeViewPostPelea = Controlador.pelear(ubicacionView, criaturaView);
@@ -160,18 +161,12 @@ public class PantallaPelea extends JFrame {
             puntosAtaqueCriatura.setText("Puntos de ataque: " + criaturaViewPostPelea.getNivelAtaque());
             puntosDefensaCriatura.setText("Puntos de defensa: " + criaturaViewPostPelea.getNivelDefensa());
 
+            botonPelear.setVisible(false);
+            peleaFinalizada = true;
+
             if (heroeViewPostPelea.getPuntosVida() > 0) {
-                botonPelear.setVisible(false);
                 if (!Controlador.juegoGanado(ubicacionView)) {
                     JOptionPane.showMessageDialog(null, "GANASTE LA PELEA");
-                    panelBoton.add(botonVolverMapa);
-                    botonVolverMapa.setVisible(true);
-                    botonVolverMapa.addActionListener(ev -> {
-                        dispose();
-                        PantallaUbicaciones pantallaUbi = new PantallaUbicaciones();
-                        pantallaUbi.setVisible(true);
-                        Controlador.ubicacionGanada(ubicacionView);
-                    });
                 } else {
                     JOptionPane.showMessageDialog(null, "ENCONSTRASTE EL TESORO; GANASTE EL JUEGO. FELICIDADES.");
                     PantallaVictoria pantallaVictoria = new PantallaVictoria();
@@ -179,21 +174,25 @@ public class PantallaPelea extends JFrame {
                     dispose();
                 }
             } else {
-                botonPelear.setVisible(false);
                 panelBoton.add(botonSalir);
                 botonSalir.setVisible(true);
-                JOptionPane.showMessageDialog(null,"PERDISTE LA PELEA. LO LAMENTO.");
+                JOptionPane.showMessageDialog(null, "PERDISTE LA PELEA. LO LAMENTO.");
                 botonSalir.addActionListener(ev -> {
                     dispose();
                     PantallaDerrota pantallaDerrota = new PantallaDerrota();
                     pantallaDerrota.setVisible(true);
                 });
             }
-            
         });
 
-        panelBoton.add(botonPelear);
-
+        botonVolverMapa.addActionListener(ev -> {
+            dispose();
+            PantallaUbicaciones pantallaUbi = new PantallaUbicaciones();
+            pantallaUbi.setVisible(true);
+            if (peleaFinalizada) {
+                Controlador.ubicacionGanada(ubicacionView);
+            }
+        });
         // Agregar los paneles al fondo
         background.add(panelSuperior, BorderLayout.NORTH);
         background.add(panelBoton, BorderLayout.SOUTH);
