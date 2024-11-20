@@ -1,0 +1,319 @@
+@startuml
+' Clases abstractas
+
+abstract class Heroe{
+# nombre: String
+# nombreUsuario: String
+# puntosVida: int ;
+# puntosVidaMaxima: int
+# nivelAtaque: int
+# nivelDefensa: int
+# nivelDefensaMaximo: int
+# nivel: int
+# experiencia: int
+# experienciaAcumulada: int
+# recompensas: List<Recompensa>
+
+
++ heroe(nombre: String, puntosVida: int, nivelAtaque: int, nivelDefensa: int, nombreUsuario: String)
++ getNombre(): String
++ setNombre(nombre String): void
++ getPuntosVida(): int
++ setPuntosVida(puntosVida: int): void
++ getNivelAtaque(nivelAtaque: int): void
++ setNivelAtaque(nivelAtaque: int): void
++ getNivelDefensa(nivelDefensa: int): void
++ setNivelDefensa(nivelDefensa: int): void
++ setNivelDefensaMaximo(nivelDefensa: int): void
+
+
+' Manu fijarse si hay que sacar estos 4 metodos
++ getNivel(): int
++ setNivel(nivel: int): void
++ getExperiencia(): int
++ setExperiencia(expriencia: int): void
+
+
++ {abstract} aplicarHabilidadesEspeciales(criatura: Criatura): int
++ nuevoNivelAtaque(criatura: Criatura): int
++ guardarRecompensa(recompensa: Recompensa): void
++ getRecompensas(): List <Recompensa>
++ getPuntosVidaMaxima(): int
++ getNivelDeDefensaMaximo(): int
++ toView(): HeroeView
++ borrarRecompensas(): void
++ aumentarNivelDeExperiencia(): void
++ aumentarExperienciaAcumulada(nivelAumento: int): void
+}
+
+class Guerrero {
+- contadorGolpes: int
+
++ Guerrero(nombre: String ,puntosVida: int , nivelAtaque: int , nivelDefensa: int ,nombreUsuario: String)
++ incrementarContadorGolpes(): int
++ aplicarHabilidadesEspeciales(criatura: Criatura): int
++ resetContadorGolpes(): void
+}
+
+
+class Mago{
+- esInmune: boolean
+
++ Mago(nombre: String ,puntosVida: int , nivelAtaque: int , nivelDefensa: int ,nombreUsuario: String)
++ aplicarHabilidadesEspeciales(criatura: Criatura): int
++ esInmune(criatura: Criatura): boolean
+
+}
+
+class Arquero {
+- agilidad: int
+- punteria: int
+
++ Arquero(nombre: String ,puntosVida: int , nivelAtaque: int , nivelDefensa: int ,nombreUsuario: String, punteria: int, agilidad: int)
++ aplicarHabilidadesEspeciales(criaturaEnemigo: Criatura): int
++ getHabilidad(): int
++ getPunteria(): int
+}
+
+abstract class Criatura{
+- contador: {static} int
+# idCriatura: String
+# nombre: String
+# puntosVida: int
+# nivel: int
+# nivelAtaque: int
+# nivelDefensa: int
++ Criatura(nombre: String ,puntosVida: int ,nivel: int ,nivelAtaque: int ,nivelDefensa: int)
+' Manu: Va o no? solo idcriatura
++ getIdCriatura(): String
++ getNombre(): String
++ getPuntosVida(): int
++ getNivel(): int
++ getNivelDefensa(): int
++ {abstract} aplicarHabilidadesEspeciales(heroe Heroe): int
++ getNivelAtaque(): int
++ nuevoNivelAtaque(heroe: Heroe): int
++ setNivelDefensa(nivelDefensa: int): void
++ setPuntosVida(PuntosVida: int): void
++ toView(): CriaturaView
+}
+
+
+class Dragon{
++ Dragon(nombre: String ,puntosVida: int ,nivel: int ,nivelAtaque: int ,nivelDefensa: int)
++ aplicarHabilidadesEspeciales(enemigo: Heroe): int
+}
+
+class Espectro {
++ Espectro(nombre: String ,puntosVida: int ,nivel: int, nivelAtaque: int ,nivelDefensa: int)
++ aplicarHabilidadesEspeciales(enemigo: Heroe): int
+}
+
+class Troll {
++ Troll(nombre: String ,puntosVida: int ,nivel: int, nivelAtaque: int ,nivelDefensa: int)
++ aplicarHabilidadesEspeciales(enemigo: Heroe): int
+}
+
+abstract class Ubicacion{
+- contador: {static} int
+# idUbicacion: String
+- nombre: String
+- heroe: Heroe
+- estaActivo: boolean
+- ubicacionGanada: boolean
+
+
+# Ubicacion(nombre: String, heroe: Heroe, estaActivo: boolean):
++ {abstract} reclamarRecompensa(heroe: Heroe): void
++ {abstract} activarSiguientesUbicaciones(): void
++ {abstract} juegoGanado(): boolean
+# getIdUbicacion(): String
+# getNombre(): String
++ nombre(): String
++ setNombre(nombre: String): void
++ getEstaActivo(): boolean
++ {abstract} getCriatura(): Criatura
+# getHeroe(): Heroe
++ {abstract} toView(): UbicacionView
+# activarMapa(): void
+# desactivarMapa(): void
++ ubicacionGanada(): void
++ getUbicacionGanada(): boolean
+
+}
+
+
+class Aldea {
+- criatura: Criatura
+- tieneTesoro: boolean
+
+
++ aldea(nombre: String, heroe: Heroe, criatura: Criatura, estaActivo: boolean, tieneTesoro: boolean)
++ juegoGanado(): boolean
++ reclamarRecompensa(heroe: Heroe): void
++ getCriatura(): Criatura
++ activarSiguientesUbicaciones(): void
++ toView(): UbicacionView
+}
+
+class Bosque{
+- criatura: Criatura
+- tieneTesoro: boolean
+- nombresUbiDesbloquea: List <Ubicacion>
+
++ bosque(nombre: String, heroe: Heroe, criatura: Criatura, estaActivo: boolean, tieneTesoro: boolean, nombresUbiDesbloquea:List <Ubicacion>)
++ juegoGanado(): boolean
++ reclamarRecompensa(heroe: Heroe): void
++ getCriatura(): Criatura
++ activarSiguientesUbicaciones(): void
++ toView(): UbicacionView
+}
+
+class MontaniasHeladas{
+- criatura: Criatura
+- tieneTesoro: boolean
+- nombresUbiDesbloquea: List <Ubicacion>
+
++ montaniasHeladas(nombre: String, heroe: Heroe, criatura: Criatura, estaActivo: boolean, tieneTesoro: boolean, nombresUbiDesbloquea:List <Ubicacion>)
++ juegoGanado(): boolean
++ reclamarRecompensa(heroe: Heroe): void
++ getCriatura(): Criatura
++ activarSiguientesUbicaciones(): void
++ toView(): UbicacionView
+}
+
+class PantanoOscuro{
+- criatura: Criatura
+- tieneTesoro: boolean
+- nombresUbiDesbloquea: List <Ubicacion>
+
++ pantanoOscuro(nombre: String, heroe: Heroe, criatura: Criatura, estaActivo: boolean, tieneTesoro: boolean, nombresUbiDesbloquea:List <Ubicacion>)
++ juegoGanado(): boolean
++ reclamarRecompensa(heroe: Heroe): void
++ getCriatura(): Criatura
++ activarSiguientesUbicaciones(): void
++ toView(): UbicacionView
+}
+
+class ParamoBrumoso{
+- criatura: Criatura
+- nombresUbiDesbloquea: List <Ubicacion>
+
+
++ paramoBrumoso(nombre: String, heroe: Heroe, criatura: Criatura, estaActivo: boolean, nombresUbiDesbloquea:List <Ubicacion>)
++ juegoGanado(): boolean
++ reclamarRecompensa(heroe: Heroe): void
++ getCriatura(): Criatura
++ activarSiguientesUbicaciones(): void
++ toView(): UbicacionView
+}
+
+class RuinasLyrath{
+- criatura: Criatura
+
++ ruinasLyrath(nombre: String, heroe: Heroe, criatura: Criatura, estaActivo: boolean)
++ juegoGanado(): boolean
++ reclamarRecompensa(heroe: Heroe): void
++ getCriatura(): Criatura
++ activarSiguientesUbicaciones(): void
++ toView(): UbicacionView
+}
+
+class UbicacionNeutral{
++ ubicacionNeutral(nombre: String, heroe: Heroe, estaActivo: boolean)
++ descansar(heroe: Heroe): void
++ reclamarRecompensa(heroe: Heroe): void
++ getCriatura(): Criatura
++ activarSiguientesUbicaciones: void
++ juegoGanado(): boolean
++ toView(): UbicacionView
+}
+
+
+class Juego{
+- instancia: {static} Juego
+- usuarioHeroe: Heroe
+- criaturas: List<Criatura>
+- ubicaciones: List<Ubicacion>
+
+
+- Juego()
++ getInstancia(): {static} Juego
++ crearGuerrero(nombre: String, puntosVida: int, nivelAtaque: int, nivelDefensa: int, nombreUsuario: String): Guerrero
++ crearMago(nombre: String, puntosVida: int, nivelAtaque: int, nivelDefensa: int, nombreUsuario: String): Mago
++ crearArquero(nombre: String, puntosVida: int, nivelAtaque: int, nivelDefensa: int, nombreUsuario: String, punteria: int, agilidad: int): Arquero
++ crearDragon(nombre: String, puntosVida: int, nivel: int, nivelAtaque: int, nivelDefensa: int): Dragon
++ crearTroll(nombre: String, puntosVida: int, nivel: int, nivelAtaque: int, nivelDefensa: int): Troll
++ crearEspectro(nombre: String, puntosVida: int, nivel: int, nivelAtaque: int, nivelDefensa: int): Espectro
++ crearUbicacionNeutral(nombre: String, heroe: Heroe, estaActivo: boolean): Ubicacion
++ crearMontaniasHeladas(nombre: String, heroe: Heroe, criatura: Criatura, estaActivo: boolean, tieneTesoro: boolean, nombresUbiDesbloquea: List<Ubicacion>): Ubicacion
++ crearPantanoOscuro(nombre: String, heroe: Heroe, criatura: Criatura, estaActivo: boolean, tieneTesoro: boolean, nombresUbiDesbloquea: List<Ubicacion>): Ubicacion
++ crearAldea(nombre: String, heroe: Heroe, criatura: Criatura, estaActivo: boolean, tieneTesoro: boolean): Ubicacion
++ crearBosque(nombre: String, heroe: Heroe, criatura: Criatura, estaActivo: boolean, tieneTesoro: boolean, nombresUbiDesbloquea: List<Ubicacion>): Ubicacion
++ crearParamoBrumoso(nombre: String, heroe: Heroe, criatura: Criatura, estaActivo: boolean, nombresUbiDesbloquea: List<Ubicacion>): Ubicacion
++ crearRuinasLyrath(nombre: String, heroe: Heroe, criatura: Criatura, estaActivo: boolean): Ubicacion
++ crearMapa(): void
++ getUbicaciones(): List<Ubicacion>
++ getHeroe(): Heroe
++ generarPelea(idUbicacion: String, idCriatura: String): boolean
+- buscarCriatura(id: String): Criatura
+- buscarUbicacion(id: String): Ubicacion
++ esUbicacionNeutral(ubicacion: Ubicacion): boolean
++ curarHeroe(idUbicacion: String): void
++ reclamarRecompensas(idUbicacion: String): void
++ ubicacionGanada(idUbicacion: String): void
++ juegoGanado(idUbicacion: String): boolean
+}
+
+
+class Pelea {
+- heroe: Heroe
+- criatura: Criatura
+
++ pelea(heroe: Heroe, criatura: Criatura)
++ iniciarPelea(): boolean
++ heroeRealizaAtaque(): void
++ CriaturaRealizaAtaque(): void
++ esUnGuerrero(): boolean
+}
+
+class Recompensa {
+- nombre: String
+- porcentajeAumentoAtaque: double
+- porcentajeAumentoDefensa: double
+
++ recompensa(nombre: String, porcentajeAumentoAtaque: double, porcentajeAumentoDefensa: double)
++ nombre(): String
++ getPorcentajeAumentoAtaque(): double
++ getPorcentajeAumentoDefensa(): double
++ toView(): RecompensaView
+
+}
+
+
+' Herencias
+Heroe <|-- Guerrero
+Heroe <|-- Mago
+Heroe <|-- Arquero
+Criatura <|-- Dragon
+Criatura <|-- Espectro
+Criatura <|-- Troll
+Ubicacion <|-- UbicacionNeutral
+Ubicacion <|-- MontaniasHeladas
+Ubicacion <|-- PantanoOscuro
+Ubicacion <|-- ParamoBrumoso
+Ubicacion <|-- RuinasLyrath
+Ubicacion <|-- Aldea
+Ubicacion <|-- Bosque
+
+' Relaciones
+Juego "1" *-- "1" Heroe
+Juego "1" *-- "*" Criatura
+Juego "1" *-- "*" Ubicacion
+Ubicacion "1" o-- "1" Heroe
+Ubicacion "1" o-- "1" Criatura
+Heroe "1" o-- "*" Recompensa
+Pelea "1..*" o-- "1" Heroe
+Pelea "1" o-- "1" Criatura
+
+@enduml
