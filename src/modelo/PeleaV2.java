@@ -13,20 +13,56 @@ public class PeleaV2 {
         boolean turnoHeroe = true;
         while(this.heroe.getPuntosVida() > 0 && this.criatura.getPuntosVida() > 0) {
             if (turnoHeroe) {
-                this.heroeRealizaAtaque();
-                System.out.println("El heroe ataco.");
+                if (esUnArquero() && this.criatura.getNombre() != "Dragon") {
+                    int numeroAleatorio = (int) (Math.random() * 100) + 1;
+                    Arquero arquero = (Arquero) this.heroe;
+                    System.out.println("Punteria arquero: " + arquero.getPunteria() + ", Num aleatorio: " + numeroAleatorio);
+                    if(numeroAleatorio <= arquero.getPunteria()){
+                        this.heroeRealizaAtaque();
+                        System.out.println("El arquero ataco.");
+                    }
+                } else if (esUnGuerrero() && this.criatura.getNombre() == "Troll") {
+                    // el guerrero mata de un golpe a los Trolls
+                    this.criatura.setPuntosVida(0);
+                    this.criatura.setNivelDefensa(0);
+                    System.out.println("El Guerrero mato de un golpe al Troll.");
+                } else {
+                    this.heroeRealizaAtaque();
+                    System.out.println("El heroe ataco.");
+                }
                 turnoHeroe = false;
             } else {
-                this.criaturaRealizaAtaque();
-                System.out.println("La criatura ataco");
+                if (esUnArquero()) {
+                    int numeroAleatorio = (int) (Math.random() * 100) + 1;
+                    Arquero arquero = (Arquero) this.heroe;
+                    if (numeroAleatorio > arquero.getAgilidad()) {
+                        this.criaturaRealizaAtaque();
+                        System.out.println("La criatura ataco");
+                    } else {
+                        System.out.println("El arquero esquivo el golpe.");
+                    }
+                } else {
+                    this.criaturaRealizaAtaque();
+                    System.out.println("La criatura ataco");
+                }
                 turnoHeroe = true;
             }
         }
         // Termino la pelea
         if (this.esUnGuerrero()) { // si es un guerrero reseteo los golpes
-            Guerrero guerrero = (Guerrero) heroe;
+            Guerrero guerrero = (Guerrero) this.heroe;
             guerrero.resetContadorGolpes();
+        } else if (this.esUnArquero()) {
+            Arquero arquero = (Arquero) this.heroe;
+            arquero.resetPunteria();
+        } else { // es un mago
+            // seteo sus puntos de vida al maximo (si gano)
+            if (this.heroe.getPuntosVida() > 0) {
+                this.heroe.setPuntosVida(this.heroe.getPuntosVidaMaxima());
+            }
         }
+
+        // True: Gano el heroe - False: Gano la criatura
         return (this.heroe.getPuntosVida() > 0);
     }
 
@@ -63,4 +99,5 @@ public class PeleaV2 {
     public boolean esUnGuerrero() {
         return heroe.getNombre() == "Guerrero";
     }
+    public boolean esUnArquero() { return heroe.getNombre() == "Arquero"; }
 }

@@ -131,7 +131,7 @@ public class PantallaInicio extends JFrame {
         public void actionPerformed(ActionEvent e) {
             if(validarNombre()) {
                 String nombreUsuario = campoNombre.getText().trim();
-                Controlador.crearMago("Mago", 10, 60, 10, nombreUsuario);
+                Controlador.crearMago("Mago", 200, 70, 30, nombreUsuario);
                 JOptionPane.showMessageDialog(null, nombreUsuario + " eligió un Mago ");
                 dispose();
             }
@@ -143,7 +143,7 @@ public class PantallaInicio extends JFrame {
         public void actionPerformed(ActionEvent e) {
             if(validarNombre()) {
                 String nombreUsuario = campoNombre.getText().trim();
-                Controlador.crearGuerrero("Guerrero", 100000000, 60, 50, nombreUsuario);
+                Controlador.crearGuerrero("Guerrero", 200, 70, 80, nombreUsuario);
                 JOptionPane.showMessageDialog(null, nombreUsuario + " eligió un Guerrero");
                 dispose();
             }
@@ -155,7 +155,7 @@ public class PantallaInicio extends JFrame {
         public void actionPerformed(ActionEvent e) {
             if(validarNombre()) {
                 String nombreUsuario = campoNombre.getText().trim();
-                Controlador.crearArquero("Arquero", 1000000000, 60, 50, nombreUsuario, 10, 10);
+                Controlador.crearArquero("Arquero", 250, 60, 40, nombreUsuario, 60, 20);
                 JOptionPane.showMessageDialog(null, nombreUsuario + " eligió un Arquero");
                 dispose();
             }

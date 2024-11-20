@@ -102,17 +102,17 @@ public class Juego {
 
 	// Mapa hardcodeado
 	public void crearMapa() {
-		Dragon dragonMontanias = this.crearDragon("Dragon", 80, 1, 40, 20);
-		Espectro espectroPantano = this.crearEspectro("Espectro", 200, 2, 45, 150);
-		Troll trollAldea = this.crearTroll("Troll", 100, 1, 40, 20);
-		Espectro espectroRuinas = this.crearEspectro("Espectro", 200, 2, 45, 150);
+		Dragon dragonMontanias = this.crearDragon("Dragon", 200, 5, 50, 75);
+		Espectro espectroPantano = this.crearEspectro("Espectro", 400, 5, 250, 150);
+		Dragon dragonAldea = this.crearDragon("Troll", 800, 1, 40, 300);
+		Espectro espectroRuinas = this.crearEspectro("Espectro", 600, 2, 150, 400);
 		Troll trollBosque = this.crearTroll("Troll", 100, 1, 40, 20);
-		Dragon dragonParamo = this.crearDragon("Dragon", 80, 1, 40, 20);
+		Troll trollParamo = this.crearTroll("Troll", 450, 2, 80, 100);
 		List<Ubicacion> nombresUbiDesbloqueaMH = new ArrayList<>();
 		List<Ubicacion> nombresUbiDesbloqueaPB = new ArrayList<>();
 		List<Ubicacion> nombresUbiDesbloqueaPO = new ArrayList<>();
 		List<Ubicacion> nombresUbiDesbloqueaB = new ArrayList<>();
-		Ubicacion aldea = this.crearAldea("Aldea", this.usuarioHeroe, trollAldea, false, true);
+		Ubicacion aldea = this.crearAldea("Aldea", this.usuarioHeroe, dragonAldea, false, true);
 		Ubicacion ruinas = this.crearRuinasLyrath("Ruinas", this.usuarioHeroe, espectroRuinas, false);
 		nombresUbiDesbloqueaPO.add(aldea);
 		nombresUbiDesbloqueaPO.add(ruinas);
@@ -122,7 +122,7 @@ public class Juego {
 		Ubicacion bosque = this.crearBosque("Bosque", this.usuarioHeroe, trollBosque, false, false, nombresUbiDesbloqueaB);
 		nombresUbiDesbloqueaPB.add(pantanoOscuro);
 		nombresUbiDesbloqueaPB.add(bosque);
-		Ubicacion paramoBrumoso = this.crearParamoBrumoso("Paramo Brumoso", this.usuarioHeroe, dragonParamo, false, nombresUbiDesbloqueaPB);
+		Ubicacion paramoBrumoso = this.crearParamoBrumoso("Paramo Brumoso", this.usuarioHeroe, trollParamo, false, nombresUbiDesbloqueaPB);
 		nombresUbiDesbloqueaMH.add(paramoBrumoso);
 		this.crearMontaniasHeladas("Montanias Heladas", this.usuarioHeroe, dragonMontanias, true, false, nombresUbiDesbloqueaMH);
 		this.crearUbicacionNeutral("Ubicacion Neutral", this.usuarioHeroe, true);
